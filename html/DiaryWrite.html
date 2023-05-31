@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/diary-write-styles.css">
+    <script src="/js/diary-write-script.js"></script>
 </head>
 <body>
   <div class="left">
@@ -57,18 +58,19 @@
   
   <div class="right">
     <!-- 오른쪽 내용을 여기에 추가 -->
-    <div id="Date_div">
-        <p id="date">날짜</p>
-        <button id="save">저장</button>
-    </div>
 
-    <form action="">
+    <form onsubmit="DiaryWrite(event)">
+        <div id="Date_div">
+            <input type="date" id="date" required>
+            <input type="submit" id="save" value="저장"></>
+        </div>
+
         <div id="Title_div">
-            <input type="text" placeholder="제목">
+            <input type="text" placeholder="제목" required>
         </div>
         
         <div id="Content_div">
-            <textarea name="" id="" cols="30" rows="10" placeholder="내용"></textarea>
+            <textarea name="" id="" cols="30" rows="10" placeholder="내용" required></textarea>
         </div>
         
         <div id="Tag_div">

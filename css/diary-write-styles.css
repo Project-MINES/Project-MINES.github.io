@@ -1,7 +1,7 @@
 .left {
     float: left;
     width: 50%;
-    height:730px;
+    height:650px;
     background-color: #ffcccc;
 }
 
@@ -11,12 +11,12 @@
     float: right;
     padding: 30px;
     width: 50%;
-    height:730px;
+    height:650px;
     background-color: #ccffcc;
 }
 
 body {
-    margin: 100px;
+    margin: 150px;
     padding: 0;
 }
 
@@ -82,12 +82,12 @@ button.anger:nth-of-type(1), button.timid:nth-of-type(1){
 
 #date{
     float: left;
-    background-color: red;
+    background-color: rgb(241, 122, 122);
 }
 
 #save{
     float: right;
-    background-color: blue;
+    background-color: rgb(181, 181, 246);
 }
 
 /* form 태그 내용 */
