@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #clickableText {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    #clickableText::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.2);
+      transition: width 0.5s ease, height 0.5s ease;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <p id="clickableText">클릭해보세요</p>
+
+  <script>
+    var clickableText = document.getElementById("clickableText");
+
+    clickableText.addEventListener("click", function(event) {
+      var circle = document.createElement("span");
+      circle.classList.add("circle");
+      clickableText.appendChild(circle);
+
+      var circleSize = Math.max(clickableText.offsetWidth, clickableText.offsetHeight);
+      circle.style.width = circleSize + "px";
+      circle.style.height = circleSize + "px";
+      circle.style.left = (event.offsetX - circleSize / 2) + "px";
+      circle.style.top = (event.offsetY - circleSize / 2) + "px";
+
+      setTimeout(function() {
+        circle.style.transform = "scale(1.5)";
+        circle.style.opacity = "0";
+      }, 10);
+
+      setTimeout(function() {
+        clickableText.removeChild(circle);
+      }, 500);
+    });
+  </script>
+</body>
+</html>

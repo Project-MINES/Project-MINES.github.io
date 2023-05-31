@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+@keyframes moveup {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -100%;
+    }
+}
+
+.nanumbarungothic * {
+    font-family: 'NanumBarunGothic', sans-serif;
+}
+
+body {
+    font-family: 'NanumBarunGothic';
+    font-weight: 600;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
+}
+
+
+.emotion:hover {
+    animation-play-state: paused;
+  }
+
+.emotion {
+    display: block;
+    font-size: 15vw;
+    color: #f1ebe5;
+    text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
+    position: absolute;
+    border-radius: 20px;
+    animation: moveup 50s linear infinite;
+}
+#emotion0:hover
+{
+    color: #D1EAF5;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion1:hover
+{
+    color: #BFC8D7;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion2:hover
+{
+    color: #D1DFE8;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion3:hover
+{
+    color: #AEDDEF;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion4:hover
+{
+    color: #A3B6C5;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion5:hover
+{
+    color: #6ECEDA;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion6:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion7:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion8:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion9:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion10:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion11:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion12:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion13:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion14:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion15:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion16:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion17:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion18:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion19:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+
+
