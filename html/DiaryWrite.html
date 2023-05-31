@@ -5,8 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/diary-write-styles.css">
 </head>
 <body>
+  <div class="left">
+    <!-- 왼쪽 내용을 여기에 추가 -->
+    <p id="SelectEmotionText">감정을 선택하세요</p>
     
+    <!-- joy: 기쁨이 / sadness: 슬픔이 / anger: 버럭이+까칠이 / timid: 소심이 -->
+    <div id="EmotionBtn">
+        <div class="joy_div">
+            <button class="joy">기쁨</button>
+            <button class="joy">행복</button>
+            <button class="joy">설렘</button>
+            <button class="joy">즐거움</button>
+            <button class="joy">평온</button>
+        </div>
+    
+        <br>
+    
+        <div class="sadness_div">
+            <button class="sadness">슬픔</button>
+            <button class="sadness">아픔</button>
+            <button class="sadness">우울함</button>
+            <button class="sadness">절망</button>
+            <button class="sadness">외로움</button>
+        </div>
+    
+        <br>
+    
+        <div class="anger_div">
+            <button class="anger">분노</button>
+            <button class="anger">짜증</button>
+            <button class="anger">혼란</button>
+            <button class="anger">불안</button>
+            <button class="anger">후회</button>
+        </div>
+        
+        <br>
+    
+        <div class="timid_div">
+            <button class="timid">지루함</button>
+            <button class="timid">소극적</button>
+            <button class="timid">죄책감</button>
+            <button class="timid">두려움</button>
+            <button class="timid">무기력</button>
+        </div>
+    </div>
+
+  </div>
+  
+  <div class="right">
+    <!-- 오른쪽 내용을 여기에 추가 -->
+    <div id="Date_div">
+        <p id="date">날짜</p>
+        <button id="save">저장</button>
+    </div>
+
+    <form action="">
+        <div id="Title_div">
+            <input type="text" placeholder="제목">
+        </div>
+        
+        <div id="Content_div">
+            <textarea name="" id="" cols="30" rows="10" placeholder="내용"></textarea>
+        </div>
+        
+        <div id="Tag_div">
+            <input type="text" placeholder="태그를 입력하세요!">
+        </div>
+    </form>
 </body>
 </html>

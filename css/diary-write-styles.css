@@ -1,0 +1,105 @@
+.left {
+    float: left;
+    width: 50%;
+    height:730px;
+    background-color: #ffcccc;
+}
+
+.right {
+    box-sizing: border-box;
+
+    float: right;
+    padding: 30px;
+    width: 50%;
+    height:730px;
+    background-color: #ccffcc;
+}
+
+body {
+    margin: 100px;
+    padding: 0;
+}
+
+#SelectEmotionText{
+    background-color: azure;
+
+    padding-left:73px;
+}
+
+/* Emotion button */
+#EmotionBtn{
+    background-color: beige;
+}
+
+.joy, .sadness, .anger, .timid{
+    box-sizing: border-box;
+
+    width: 123px;
+    height:70px;
+
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top:20px;
+
+    background: #FFE500;
+    border: 4px solid #FFE500;
+    border-radius: 20px;
+}
+
+.joy{
+    margin-top:0px;
+
+    background: #FFE500;
+    border: 4px solid #FFE500;
+}
+
+.sadness{
+    background: #A4B8FF;
+    border: 4px solid #A4B8FF;
+}
+
+.anger{
+    background: #FFA0A0;
+    border: 4px solid #FFA0A0;
+}
+
+.timid{
+    background: #E1BAFF;
+    border: 4px solid #E1BAFF;
+}
+
+button.joy:nth-of-type(1), button.sadness:nth-of-type(1),
+button.anger:nth-of-type(1), button.timid:nth-of-type(1){
+    margin-left:68px;
+}
+
+/* 오른쪽 내용 */
+#Date_div{
+    background-color: rgb(76, 212, 167);
+    width:auto;
+    height:100px;
+}
+
+#date{
+    float: left;
+    background-color: red;
+}
+
+#save{
+    float: right;
+    background-color: blue;
+}
+
+/* form 태그 내용 */
+
+#Title_div{
+    background-color: antiquewhite;
+}
+
+#Content_div{
+    background-color: #c6deff;
+}
+
+#Tag_div{
+    background-color: #E1BAFF;
+}
