@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>비 내리는 효과</title>
+  <style>
+    html {
+      height: 100%;
+    }
+
+    @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+    }
+
+    @keyframes moveup {
+        0% {
+            top: 100%;
+        }
+        100% {
+            top: -100%;
+        }
+    }
+
+    .nanumbarungothic * 
+    {
+        font-family: 'NanumBarunGothic', sans-serif;
+    }
+
+    body {
+        font-family: 'NanumBarunGothic';
+        font-weight: 600;
+        height: 100vh;
+        width: 100%;
+        /*background: rgb(25, 132, 213);*/
+        background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
+        transition: background-color 1.2s ease;
+    }
+
+    body::-webkit-scrollbar
+    {
+        display:none;
+    }
+
+    .rain {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .rain.back-row {
+      display: none;
+      z-index: -2;
+      bottom: 60px;
+      opacity: 0.5;
+    }
+
+    body.back-row-toggle .rain.back-row {
+      display: block;
+    }
+
+    .drop {
+      position: absolute;
+      bottom: 100%;
+      width: 15px;
+      height: 120px;
+      pointer-events: none;
+      animation: drop 0.5s linear infinite;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(0vh);
+      }
+      75% {
+        transform: translateY(90vh);
+      }
+      100% {
+        transform: translateY(90vh);
+      }
+    }
+
+    .stem {
+      width: 15px;
+      height: 60%;
+      margin-left: 7px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
+      animation: stem 0.5s linear infinite;
+    }
+
+    @keyframes stem {
+      0% {
+        opacity: 1;
+      }
+      65% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .splat {
+      width: 30px;
+      height: 10px;
+      border-top: 2px dotted rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      opacity: 1;
+      transform: scale(0);
+      animation: splat 0.5s linear infinite;
+      display: none;
+    }
+
+    body.splat-toggle .splat {
+      display: block;
+    }
+
+    @keyframes splat {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      80% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      90% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.5);
+      }
+    }
+
+    .emotion {
+    -ms-overflow-style: none;
+    display: block;
+    font-size: 15vw;
+    /*color: rgb(22, 119, 191);*/
+    color: #f1ebe5;
+    /*color: #9f9b97;*/
+    text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
+    line-height: 30%;
+}
+
+#emotionDiv 
+{
+    position: absolute;
+    left: 3%;
+}
+
+#emotion0
+{
+    
+}
+
+
+#emotion0:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+    /*text-shadow: rgb(15, 81, 132);*/
+}
+#emotion1:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion2:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion3:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion4:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion5:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion6:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion7:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion8:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion9:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion10:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion11:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion12:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion13:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion14:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion15:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion16:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion17:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion18:hover
+{ 
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+#emotion19:hover
+{
+    color: white;
+    text-shadow: 0 0 10px rgb(134, 116, 86);
+}
+
+  </style>
+</head>
+<body>
+  <div class="rain front-row"></div>
+  <div class="rain back-row"></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var makeItRain = function() {
+      //clear out everything
+      $('.rain').empty();
+
+      var increment = 0;
+      var drops = "";
+      var backDrops = "";
+
+      while (increment < 100) {
+        //couple random numbers to use for various randomizations
+        //random number between 98 and 1
+        var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+        //random number between 5 and 2
+        var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
+        //increment
+        increment += randoFiver;
+        //add in a new raindrop with various randomizations to certain CSS properties
+        drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+        backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+      }
+
+      $('.rain.front-row').append(drops);
+      $('.rain.back-row').append(backDrops);
+    }
+    
+    var arr = new Array();
+    arr = [30, 7, 5, 3, 5, 34, 2, 8, 1, 1, 52, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+ 
+    var arr2 = new Array();
+    var arr3 = new Array();
+    arr2 = ["기쁨", "행복", "설렘", "즐거움", "평온", "슬픔", "아픔", "우울함", "절망", "외로움", "분노", "짜증", "혼란", "불안", "후회", "지루함", "부끄러움", "죄책감", "두려움", "놀람"];
+    arr3 = ["JOY", "HAPPINESS", "EXCITEMENT", "PLEASURE", "CALM", "SADNESS", "PAIN", "DEPRESSION", "DESPAIR", "LONELINESS", "ANGER", "ANNOYANCE", "CONFUSION", "ANXIETY", "REGRET", "BOREDOM", "SHAME", "GUILT", "FEAR", "SURPRISE"];
+ 
+ // arr2 내용 html 화면에 출력
+ var emotionDiv = document.createElement("div");
+    emotionDiv.id = "emotionDiv";
+    emotionDiv.className = "emotion";
+    for (var i = 0; i < arr2.length; i++) 
+    {
+        var span = document.createElement("span");
+        span.id = "emotion" + i;
+        span.innerHTML = arr2[i] + "&nbsp;" + arr3[i] + "&nbsp; ";
+        emotionDiv.appendChild(span);
+    }
+    document.body.appendChild(emotionDiv);
+
+    function changeSize() 
+    {
+      for (var i = 0; i < arr2.length; i++) {
+          var size = 3 * arr[i] + 100;
+          document.getElementById("emotion" + i).style.fontSize = size + "px";
+      }
+    }
+ 
+    changeSize();
+
+    const targetText = document.getElementById("emotion5");
+    const body = document.body;
+
+    targetText.addEventListener('mouseover', () => {
+      body.style.background = '#1984D5';
+      document.querySelector(".emotion").style.color = "#1677BF";
+      document.querySelector(".emotion").style.textShadow = "0 0 0px black";
+      timeoutId = setTimeout(makeItRain, 1000);
+    });
+
+    targetText.addEventListener('mouseout', () => {
+      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+      document.querySelector(".emotion").style.color = "#f1ebe5";
+      document.querySelector(".emotion").style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+      clearTimeout(timeoutId);
+    });
+  </script>
+</body>
+</html>
+
+</script>
+</body>
+</html>

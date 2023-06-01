@@ -1,145 +1,385 @@
-@font-face {
-    font-family: 'NanumBarunGothic';
-    font-style: normal;
-    font-weight: 400;
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-}
-
-@keyframes moveup {
-    0% {
-        top: 100%;
-    }
-    100% {
-        top: -100%;
-    }
-}
-
-.nanumbarungothic * {
-    font-family: 'NanumBarunGothic', sans-serif;
-}
-
-body {
-    font-family: 'NanumBarunGothic';
-    font-weight: 600;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
-}
-
-
-.emotion:hover {
-    animation-play-state: paused;
+html {
+    height: 100%;
   }
 
-.emotion {
-    display: block;
-    font-size: 15vw;
-    color: #f1ebe5;
-    text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
+  @font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+  }
+
+  @keyframes moveup {
+      0% {
+          top: 100%;
+      }
+      100% {
+          top: -100%;
+      }
+  }
+
+  .nanumbarungothic * 
+  {
+      font-family: 'NanumBarunGothic', sans-serif;
+  }
+
+  body {
+      font-family: 'NanumBarunGothic';
+      font-weight: 600;
+      height: 100vh;
+      width: 100%;
+      /*background: rgb(25, 132, 213);*/
+      background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
+      transition: background-color 1.2s ease;
+  }
+
+  body::-webkit-scrollbar
+  {
+      display:none;
+  }
+
+  .rain {
     position: absolute;
-    border-radius: 20px;
-    animation: moveup 50s linear infinite;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .rain.back-row {
+    display: none;
+    z-index: -2;
+    bottom: 60px;
+    opacity: 0.5;
+  }
+
+  body.back-row-toggle .rain.back-row {
+    display: block;
+  }
+
+  .drop {
+    position: absolute;
+    bottom: 100%;
+    width: 15px;
+    height: 120px;
+    pointer-events: none;
+    animation: drop 0.5s linear 5;
+  }
+
+  @keyframes drop {
+    0% {
+      transform: translateY(0vh);
+    }
+    75% {
+      transform: translateY(90vh);
+    }
+    100% {
+      transform: translateY(90vh);
+    }
+  }
+
+  .stem {
+    width: 15px;
+    height: 60%;
+    margin-left: 7px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
+    animation: stem 0.5s 100;
+  }
+
+  @keyframes stem {
+    0% {
+      opacity: 1;
+    }
+    65% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .splat {
+    width: 30px;
+    height: 10px;
+    border-top: 2px dotted rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 1;
+    transform: scale(0);
+    animation: splat 0.5s 100;
+    display: none;
+  }
+
+  body.splat-toggle .splat {
+    display: block;
+  }
+
+  @keyframes splat {
+    0% {
+      opacity: 1;
+      transform: scale(0);
+    }
+    80% {
+      opacity: 1;
+      transform: scale(0);
+    }
+    90% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+  }
+
+  .emotion {
+  -ms-overflow-style: none;
+  display: block;
+  font-size: 15vw;
+  /*color: rgb(22, 119, 191);*/
+  color: #f1ebe5;
+  /*color: #9f9b97;*/
+  text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
+  line-height: 30%;
 }
+
+#emotionDiv 
+{
+  position: absolute;
+  left: 3%;
+}
+
 #emotion0:hover
 {
-    color: #D1EAF5;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
+  /*text-shadow: rgb(15, 81, 132);*/
 }
 #emotion1:hover
 {
-    color: #BFC8D7;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
-#emotion2:hover
+.particletext {
+    font-size:48px;
+    position: relative;
+ }
+ 
+ .particletext.hearts > .particle {
+    opacity:0;
+    position: absolute;
+    background-color:rgba(204,42,93,1);
+    animation: hearts 3s ease-in 5;
+ }
+ 
+ .particletext.hearts > .particle:before,
+ .particletext.hearts > .particle:after {
+    position: absolute;
+    content: '';
+    border-radius:100px;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color:rgba(204,42,93,1);
+ }
+ 
+ .particletext.hearts > .particle:before {
+    transform:translateX(-50%);
+ }
+ 
+ .particletext.hearts > .particle:after {
+    transform:translateY(-50%);
+ }
+ 
+ .particletext.fire > .particle {
+    position: absolute;
+    background-color:rgba(255,193,7,0.5);
+    border-radius:40px;
+    border-top-right-radius:0px;
+    animation: fires 0.8s linear 5;
+    transform:rotate(-45deg);
+    opacity:0;
+ }
+ 
+ .particletext.fire > .particle:before {
+    position: absolute;
+    content: '';
+    top:60%;
+    left:40%;
+    transform:translate(-50%,-50%);
+    width:50%;
+    height:50%;
+    border-radius:40px;
+    border-top-right-radius:0px;
+    background-color:rgba(251,140,0,0.5);
+ }
+ 
+ @keyframes hearts {
+    0% {
+       opacity: 0;
+       transform:translate(0, 0%) rotate(45deg);
+    }
+    20% { 
+       opacity: 0.8;
+       transform:translate(0, -20%) rotate(45deg);
+    }
+    100% {
+       opacity: 0;
+       transform:translate(0, -1000%) rotate(45deg);
+    }
+ }
+ 
+ @keyframes fires {
+    0% {
+       transform: rotate(-70deg) translateY(0%);
+    }
+    25% {
+       transform: rotate(-20deg) translateY(-5%);
+       opacity:1;
+    }
+    50%{
+       transform: rotate(-70deg) translateY(-10%);
+    }
+    75% {
+       transform: rotate(-20deg) translateY(-20%);
+    }
+    100% {
+       transform: rotate(-70deg) translateY(-40%);
+       opacity:1;
+    }
+ }
+ #emotion2:hover
 {
-    color: #D1DFE8;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion3:hover
 {
-    color: #AEDDEF;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion4:hover
 {
-    color: #A3B6C5;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion5:hover
 {
-    color: #6ECEDA;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
+
 #emotion6:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion7:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion8:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion9:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion10:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion11:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion12:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
+
 #emotion13:hover
 {
+    position : absolute;
+    animation: shake 0.8s linear 5;
     color: white;
     text-shadow: 0 0 10px rgb(134, 116, 86);
 }
+@keyframes shake {
+    0% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
+    10% {
+      transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    20% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    30% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    60% {
+      transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+      transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+    100% {
+      transform: translate(1px, 1px) rotate(0deg);
+    }
+  }
+
 #emotion14:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion15:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion16:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion17:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion18:hover
-{
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+{ 
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 #emotion19:hover
 {
-    color: white;
-    text-shadow: 0 0 10px rgb(134, 116, 86);
+  color: white;
+  text-shadow: 0 0 10px rgb(134, 116, 86);
 }
-
-
