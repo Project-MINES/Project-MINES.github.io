@@ -2,11 +2,11 @@
 let diaryList = []  //일기 리스트
 
 //html 출력 연습 부분
-const contents = "오늘의 일기/영어 공부를 했다. 많이 틀렸다. 슬프다.";
-localStorage.setItem("key", contents);
-const savedDiary = localStorage.getItem("key");
-const diaryContainer = document.getElementById("diary-container");   //div diary-container 영역에 표시
-diaryContainer.textContent = savedDiary;        //html div 영역에 출력할때 쓰는 법
+// const contents = "오늘의 일기/영어 공부를 했다. 많이 틀렸다. 슬프다.";
+// localStorage.setItem("key", contents);
+// const savedDiary = localStorage.getItem("key");
+// const diaryContainer = document.getElementById("diary-container");   //div diary-container 영역에 표시
+// diaryContainer.textContent = savedDiary;        //html div 영역에 출력할때 쓰는 법
 //html 출력 연습 부분 끝
 
 //2차원 배열로 저장
