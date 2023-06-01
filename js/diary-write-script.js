@@ -24,27 +24,36 @@ function DiaryWrite(event){
     // 폼 제출 동작 막기
     event.preventDefault();
 
-    // 입력값 가져오기
-    let date = document.querySelector('#date').value;
-    let title = document.querySelector('#Title_div input').value;
-    let content = document.querySelector('#Content_div textarea').value;
-    let tag = document.querySelector('#Tag_div input').value;
+    //감정을 선택하지 않았다면 일기 저장 X
+    if(EmotionList.length!=0){
+        // 입력값 가져오기
+        let date = document.querySelector('#date').value;
+        let title = document.querySelector('#Title_div input').value;
+        let content = document.querySelector('#Content_div textarea').value;
+        let tag = document.querySelector('#Tag_div input').value;
 
-    /*
-    *  <<localStorage>>
-    *  Key: date(일기 작성 날짜)
-    *  Value: date, title, content, tag
-    */
-    DiaryData = {
-        Date: date,
-        Title: title,
-        Content: content,
-        Tag : tag
-    };
-    
-    localStorage.setItem(date, JSON.stringify(DiaryData));
-    
-    let storedData = JSON.parse(localStorage.getItem(date));
-    let ageValue = storedData.name;
+        /*
+        *  <<localStorage>>
+        *  Key: date(일기 작성 날짜)
+        *  Value: date, title, content, tag
+        */
+        DiaryData = {
+            Date: date,
+            Title: title,
+            Content: content,
+            Tag : tag,
+            Emotion : EmotionList
+        };
+        
+        localStorage.setItem(date, JSON.stringify(DiaryData));
+        
+        let storedData = JSON.parse(localStorage.getItem(date));
+        let ageValue = storedData.Emotion[0];
+        
+        console.log(ageValue);
+    } else{
+        alert("감정을 하나 이상 선택해주세요");
+    }
+
 
 }
