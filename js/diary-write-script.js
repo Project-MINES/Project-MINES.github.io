@@ -1,4 +1,24 @@
-/*일기 작성 form 수행 시*/
+/*
+* 선택된 감정 버튼 저장
+*/
+let BtnString="";
+let EmotionList=[];
+function BtnSelect(BtnString){
+
+    let idx = EmotionList.indexOf(BtnString);
+
+    if(idx==-1){
+        EmotionList.push(BtnString);
+    } else{
+        EmotionList.splice(idx, 1); //idx부터 1개의 값 삭제
+    }
+    
+    //console.log(EmotionList);
+}
+
+/*
+* 일기 작성 form 수행 시
+*/
 function DiaryWrite(event){
 
     // 폼 제출 동작 막기
