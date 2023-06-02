@@ -74,30 +74,17 @@ function createDiaryListItem(diaryData) {
   return listItem;
 }
 
-/*
-* 일기 제목 클릭 시 내용 띄우기
-*/
+// 일기 내용 표시
 function showDiaryContent(diaryData) {
-  // 팝업 또는 화면 요소 생성 및 스타일링
-  // 예시: 팝업을 이용한 방법
-  const popup = document.createElement("div");
-  popup.className = "diaryPopup";
-
-  const contentElement = document.createElement("p");
-  contentElement.innerText = diaryData.Content;
-
+  const diaryContentElement = document.getElementById("diaryContent");
+  diaryContentElement.innerHTML = `<pre>${diaryData.Content}</pre>`;
+  
+  // 닫기 버튼 추가
   const closeButton = document.createElement("button");
   closeButton.innerText = "닫기";
-
-  // 팝업에 내용 및 닫기 버튼 추가
-  popup.appendChild(contentElement);
-  popup.appendChild(closeButton);
-
-  // 팝업을 body에 추가하여 표시
-  document.body.appendChild(popup);
-
-  // 닫기 버튼 클릭 시 팝업 제거
   closeButton.addEventListener("click", function () {
-    document.body.removeChild(popup);
+    diaryContentElement.innerHTML = ""; // 일기 내용 지우기
   });
+
+  diaryContentElement.appendChild(closeButton);
 }
