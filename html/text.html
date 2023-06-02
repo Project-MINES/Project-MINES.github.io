@@ -2,165 +2,87 @@
 <html>
   <head>
     <style>
-    body { 
-   padding:40px 0;
-   font-family: 'bebas', sans-serif;
-   background-color:#fff;
+
+
+
+
+
+body {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Francois One', sans-serif;
+  background-color:DarkOrange;
+  color: white;
+}
+h1 {
+  
+ 
+  transition: all 1s;
+}
+h1:hover {
+  filter:blur(x);
+  letter-spacing: 0.3em;
+  transform:scale(1.4);
+  opacity:0.05;
 }
 
-.textcontainer {
-   padding:40px 0;
-   text-align:center;
-}
 
-.particletext {
-   font-size:48px;
-   position: relative;
-}
 
-.particletext.hearts > .particle {
-   opacity:0;
-   position: absolute;
-   background-color:rgba(204,42,93,1);
-   animation: hearts 3s ease-in infinite;
-}
 
-.particletext.hearts > .particle:before,
-.particletext.hearts > .particle:after {
-   position: absolute;
-   content: '';
-   border-radius:100px;
-   top:0px;
-   left:0px;
-   width:100%;
-   height:100%;
-   background-color:rgba(204,42,93,1);
-}
-
-.particletext.hearts > .particle:before {
-   transform:translateX(-50%);
-}
-
-.particletext.hearts > .particle:after {
-   transform:translateY(-50%);
-}
-
-.particletext.fire > .particle {
-   position: absolute;
-   background-color:rgba(255,193,7,0.5);
-   border-radius:40px;
-   border-top-right-radius:0px;
-   animation: fires 0.8s linear infinite;
-   transform:rotate(-45deg);
-   opacity:0;
-}
-
-.particletext.fire > .particle:before {
-   position: absolute;
-   content: '';
-   top:60%;
-   left:40%;
-   transform:translate(-50%,-50%);
-   width:50%;
-   height:50%;
-   border-radius:40px;
-   border-top-right-radius:0px;
-   background-color:rgba(251,140,0,0.5);
-}
-
-@keyframes hearts {
-   0% {
-      opacity: 0;
-      transform:translate(0, 0%) rotate(45deg);
-   }
-   20% { 
-      opacity: 0.8;
-      transform:translate(0, -20%) rotate(45deg);
-   }
-   100% {
-      opacity: 0;
-      transform:translate(0, -1000%) rotate(45deg);
-   }
-}
-
-@keyframes fires {
-   0% {
-      transform: rotate(-70deg) translateY(0%);
-   }
-   25% {
-      transform: rotate(-20deg) translateY(-5%);
-      opacity:1;
-   }
-   50%{
-      transform: rotate(-70deg) translateY(-10%);
-   }
-   75% {
-      transform: rotate(-20deg) translateY(-20%);
-   }
-   100% {
-      transform: rotate(-70deg) translateY(-40%);
-      opacity:1;
-   }
-}
+/*
+  --color-primary: #5192ED;
+  --color-secondary: #69A1F0;
+  --color-tertiary: #7EAEF2;
+  --color-quaternary: #90BAF5;
+  --color-quinary: #A2C4F5;
+*/
 
    </style>
   </head>
-  <body>
-   
-    <div class="textcontainer">
-      <span id="heart" class="particletext hearts">Hearts</span>
-   </div>
-   
-   <div class="textcontainer">
-      <span id="fire" class="particletext fire">Fire</span>
-   </div>
-   
+  <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+
+<div id >
+  
+<h1>HOVER ME!</h1><br />
+
+</div>
+  
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script>
-    function initparticles() {
-   hearts();
-   fire();
-}
+    var $menu = $('.Menu-list'),
+    $item = $('.Menu-list-item'),
+    w = $(window).width(), //window width
+    h = $(window).height(); //window height
 
-/*The measurements are ... whack (so to say), for more general text usage I would generate different sized particles for the size of text; consider this pen a POC*/
+$(window).on('mousemove', function(e) {
+  var offsetX = 0.5 - e.pageX / w, //cursor position X
+      offsetY = 0.5 - e.pageY / h, //cursor position Y
+      dy = e.pageY - h / 2, //@h/2 = center of poster
+      dx = e.pageX - w / 2, //@w/2 = center of poster
+      theta = Math.atan2(dy, dx), //angle between cursor and center of poster in RAD
+      angle = theta * 180 / Math.PI - 90, //convert rad in degrees
+      offsetPoster = $menu.data('offset'),
+      transformPoster = 'translate3d(0, ' + -offsetX * offsetPoster + 'px, 0) rotateX(' + (-offsetY * offsetPoster) + 'deg) rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)'; //poster transform
 
+  //get angle between 0-360
+  if (angle < 0) {
+    angle = angle + 360;
+  }
 
+  //poster transform
+  $menu.css('transform', transformPoster);
 
-function hearts() {
-   $.each($(".particletext.hearts"), function(){
-      var heartcount = ($(this).width()/50)*5;
-      for(var i = 0; i <= heartcount; i++) {
-         var size = ($.rnd(60,120)/10);
-         $(this).append('<span class="particle" style="top:' + $.rnd(20,80) + '%; left:' + $.rnd(0,95) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,30)/10) + 's;"></span>');
-      }
-   });
-}
+  //parallax for each layer
+  $item.each(function() {
+    var $this = $(this),
+        offsetLayer = $this.data('offset') || 0,
+        transformLayer = 'translate3d(' + offsetX * offsetLayer + 'px, ' + offsetY * offsetLayer + 'px, 20px)';
 
-function fire() {
-   $.each($(".particletext.fire"), function(){
-      var firecount = ($(this).width()/50)*20;
-      for(var i = 0; i <= firecount; i++) {
-         var size = $.rnd(8,12);
-         $(this).append('<span class="particle" style="top:' + $.rnd(40,70) + '%; left:' + $.rnd(-10,100) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,20)/10) + 's;"></span>');
-      }
-   });
-}
-
-jQuery.rnd = function(m,n) {
-      m = parseInt(m);
-      n = parseInt(n);
-      return Math.floor( Math.random() * (n - m + 1) ) + m;
-}
-
-$("#heart").hover(function() {
-   hearts();
-}, function() {
-   // Hover out event
-   // 이 부분은 필요에 따라서 구현하시면 됩니다.
-   // hover out 시에 필요한 동작이 있을 경우 이 부분에 작성하면 됩니다.
+    $this.css('transform', transformLayer);
+  });
 });
-
-
    </script>
   </body>
 </html>
