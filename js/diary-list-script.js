@@ -1,90 +1,64 @@
-/*
-* 일기 목록 페이지 로딩 시 실행되는 함수
-*/
-window.onload = function () {
-  loadDiaryList();
-};
-
-/*
-* 일기 목록 불러오기
-*/
-function loadDiaryList() {
-  const diaryListElement = document.getElementById("diaryList");
-  diaryListElement.innerHTML = "";
-
-  // LocalStorage에서 일기 데이터 가져오기
-  const diaryList = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key !== "EmotionCount") {
-      const diaryData = JSON.parse(localStorage.getItem(key));
-      diaryList.push(diaryData);
-    }
-  }
-
-  // 날짜순으로 일기 정렬
-  const sortedDiaryList = diaryList.sort(function (a, b) {
-    const dateA = new Date(a.Date);
-    const dateB = new Date(b.Date);
-    return dateB - dateA;
-  });
-
-  // 정렬된 일기 목록을 화면에 표시
-  for (let i = 0; i < sortedDiaryList.length; i++) {
-    const diaryData = sortedDiaryList[i];
-    const listItem = createDiaryListItem(diaryData);
-    diaryListElement.appendChild(listItem);
+// LocalStorage에서 일기 데이터 가져오기
+const diaryList = [];
+for (let i = 0; i < localStorage.length; i++) {
+  const key = localStorage.key(i);
+  if (key !== "EmotionCount") {
+    const diaryData = JSON.parse(localStorage.getItem(key));
+    diaryList.push(diaryData);
   }
 }
 
+// 날짜를 기준으로 일기 목록 정렬
+diaryList.sort((a, b) => {
+  const dateA = new Date(a.Date);
+  const dateB = new Date(b.Date);
+  return dateB - dateA;
+});
+
+// polaroidContainer 요소 참조
+const polaroidContainer = document.getElementById("polaroidContainer");
+
 /*
-* 일기 목록 아이템 생성
-*/
-function createDiaryListItem(diaryData) {
-  const listItem = document.createElement("li");
-  listItem.className = "diaryListItem";
+ * Polaroid 요소 생성
+ */
+function createPolaroid(diaryData) {
+  const polaroid = document.createElement("div");
+  polaroid.className = "polaroid";
 
-  // 일기 정보 표시
-  // 날짜 표시
-  const dateElement = document.createElement("span");
-  dateElement.className = "date";
-  dateElement.innerText = diaryData.Date;
-  // 제목 표시
-  const titleElement = document.createElement("h2");
-  titleElement.innerText = diaryData.Title;
-  
-  // 제목 클릭 시 이벤트 처리
-  titleElement.addEventListener("click", function () {
-    showDiaryContent(diaryData);
-  });
-  
-  /*  내용과 태그 출력
-  const contentElement = document.createElement("p");
-  contentElement.innerText = diaryData.Content;
+  const image = document.createElement("img");
+  image.src = diaryData.imageURL;
+  polaroid.appendChild(image);
 
-  const tagElement = document.createElement("span");
-  tagElement.className = "tag";
-  tagElement.innerText = diaryData.Tag;
-  */
-  listItem.appendChild(dateElement);
-  listItem.appendChild(titleElement);
-  // listItem.appendChild(contentElement);
-  // listItem.appendChild(tagElement);
+  const title = document.createElement("h5");
+  title.textContent = diaryData.Title;
+  polaroid.appendChild(title);
 
-  return listItem;
+  const date = document.createElement("p");
+  date.textContent = diaryData.Date;
+  polaroid.appendChild(date);
+
+  return polaroid;
 }
 
-// 일기 내용 표시
-function showDiaryContent(diaryData) {
-  const diaryContentElement = document.getElementById("diaryContent");
-  diaryContentElement.innerHTML = `<pre>${diaryData.Content}</pre>`;
-  
-  // 닫기 버튼 추가
-  const closeButton = document.createElement("button");
-  closeButton.innerText = "닫기";
-  closeButton.addEventListener("click", function () {
-    diaryContentElement.innerHTML = ""; // 일기 내용 지우기
-  });
+// 한 줄에 표시할 일기 개수
+const itemsPerRow = 3;
 
-  diaryContentElement.appendChild(closeButton);
+// 열(column) 요소를 그룹화하여 열 생성
+const columns = [];
+for (let i = 0; i < itemsPerRow; i++) {
+  const column = document.createElement("div");
+  column.className = "column";
+  columns.push(column);
 }
+
+// 일기 데이터를 기반으로 polaroid 요소 동적 생성 및 배치
+diaryList.forEach((diaryData, index) => {
+  const polaroid = createPolaroid(diaryData);
+  const targetColumn = columns[index % itemsPerRow];
+  targetColumn.appendChild(polaroid);
+});
+
+// 생성된 열을 polaroidContainer에 추가
+columns.forEach((column) => {
+  polaroidContainer.appendChild(column);
+});
