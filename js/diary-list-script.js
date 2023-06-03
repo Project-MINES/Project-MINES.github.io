@@ -25,9 +25,13 @@ function createPolaroid(diaryData) {
   const polaroid = document.createElement("div");
   polaroid.className = "polaroid";
 
-  const image = document.createElement("img");
-  image.src = diaryData.imageURL;
-  polaroid.appendChild(image);
+  const content = document.createElement("div");
+  content.className = "content";
+  content.textContent = diaryData.Content;
+  polaroid.appendChild(content);
+  
+  // 일기 내용 초기 상태 설정
+  content.classList.add("show-content");
 
   const title = document.createElement("h5");
   title.textContent = diaryData.Title;
@@ -37,6 +41,11 @@ function createPolaroid(diaryData) {
   date.textContent = diaryData.Date;
   polaroid.appendChild(date);
 
+  // 일기 내용 보이기/감추기 이벤트 처리
+  polaroid.addEventListener("click", () => {
+    content.classList.toggle("show-content");
+  });
+  
   return polaroid;
 }
 
