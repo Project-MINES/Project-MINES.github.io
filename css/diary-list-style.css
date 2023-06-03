@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+body {
+  font-family: arial, helvetica, sans-serif;
+}
+
+#polaroidContainer {
+  display: flex;
+  flex-wrap: wrap; /* 줄 바꿈 설정 */
+  justify-content: center; /* 가운데 정렬 */
+  margin: 0 auto; /* 가운데 정렬을 위한 왼쪽과 오른쪽 여백 설정 */
+}
+
+#polaroidContainer .polaroid {
+  background: #f3f3f3;
+  border: 1px solid #dedede;
+  width: 216px;
+  height: 214px;
+  box-shadow: 0px 0px 1px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-right: 20px; /* 오른쪽 마진 설정 */
+  margin-bottom: 20px; /* 아래쪽 마진 설정 */
+}
+
+#polaroidContainer .polaroid:after {
+  bottom: 4px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  right: 4px;
+  transform: skew(2deg, 2deg);
+  position: absolute;
+  z-index: -1;
+  transition: all 0.4s ease;
+  content: "";
+  height: 200px;
+  width: 90%;
+}
+
+#polaroidContainer .polaroid:hover:after {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#polaroidContainer .polaroid img {
+  display: block;
+  width: 194px;
+  height: 139px;
+}
+
+#polaroidContainer .polaroid h5 {
+  color: #7ac143;
+  font-size: 24px;
+  margin-top: 4px;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  overflow: hidden; /* 넘침 처리 */
+  text-overflow: ellipsis; /* 생략 부호(...) 표시 */
+}
+#polaroidContainer .polaroid p {
+  font-size: 14px;
+  color: #3f4543;
+}
+#polaroidContainer .polaroid .content {
+  color: black;
+  height: 75%; /* 내용 영역의 높이 설정 */
+  overflow: hidden; /* 넘침 처리 */
+}
+#polaroidContainer .polaroid .content.show-content {
+  color: white; /* 일기 내용 클릭 시 검은색으로 변환 */
+}
+.diary-list .polaroid {
+  transition: all 0.3s ease;
+}
