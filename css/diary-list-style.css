@@ -63,3 +63,14 @@ body {
   font-size: 14px;
   color: #3f4543;
 }
+#polaroidContainer .polaroid .content {
+  color: black;
+  height: 75%; /* 내용 영역의 높이 설정 */
+  overflow: hidden; /* 넘침 처리 */
+}
+#polaroidContainer .polaroid .content.show-content {
+  color: white; /* 일기 내용 클릭 시 검은색으로 변환 */
+}
+.diary-list .polaroid {
+  transition: all 0.3s ease;
+}
