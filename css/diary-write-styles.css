@@ -35,6 +35,10 @@
 }
 
 body {
+
+    opacity: 0;
+    transition: opacity 1s ease-in;
+
     margin-top:140px;
     margin-bottom: 150px;
     margin-left:400px;
@@ -66,7 +70,7 @@ body {
     margin-top:8%;
 }
 
-.joy, .sadness, .anger, .timid{
+.joy_div>button, .sadness_div>button, .anger_div>button, .timid_div>button{
     width: 70px;
     height: 70px;
 
@@ -80,43 +84,44 @@ body {
     border-radius: 50px;
 }
 
-.joy{
+.joy_div>button{
     background: #fffadb;
     box-shadow: inset 0px 4px 4px rgba(142, 131, 32, 0.25);
 }
 
-.sadness{
+.sadness_div>button{
     background: #e4eaff;
     box-shadow: inset 0px 4px 4px rgba(34, 39, 123, 0.25);
 }
 
-.anger{
-    background: #ffe4e4;
-    box-shadow: inset 0px 4px 4px rgba(202, 45, 45, 0.25);
-}
-
-.timid{
+.timid_div>button{
     background: #f6e9ff;
     box-shadow: inset 0px 4px 4px rgba(163, 45, 202, 0.25);
 }
 
-.joy:hover, .sadness:hover, .anger:hover, .timid:hover{
+.anger_div>button{
+    background: #ffe4e4;
+    box-shadow: inset 0px 4px 4px rgba(202, 45, 45, 0.25);
+}
+
+.joy_div>button:hover, .sadness_div>button:hover, .anger_div>button:hover, .timid_div>button:hover{
     cursor:pointer;
 }
-.joy:hover{
+
+.joy_div>button:hover{
     background-color: rgb(255, 242, 120);
 }
 
-.sadness:hover{
+.sadness_div>button:hover{
     background-color: rgb(157, 180, 255);
 }
 
-.anger:hover{
-    background-color: rgb(255, 128, 109);
-}
-
-.timid:hover{
+.timid_div>button:hover{
     background-color: rgb(208, 137, 239);
+} 
+
+.anger_div>button:hover{
+    background-color: rgb(255, 128, 109);
 }
 
 /* 오른쪽 내용 */
