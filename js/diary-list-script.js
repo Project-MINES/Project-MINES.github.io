@@ -1,3 +1,9 @@
+//페이지 켜질 때 부드럽게
+$(document).ready(function() {
+  $('#content').css('opacity', 1);
+});
+
+
 // LocalStorage에서 일기 데이터 가져오기
 const diaryList = [];
 for (let i = 0; i < localStorage.length; i++) {

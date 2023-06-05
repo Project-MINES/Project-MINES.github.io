@@ -1,3 +1,23 @@
+// 페이지 진입시 부드럽게 
+$(document).ready(function() {
+  $('#goList').click(function() {
+    $('#emotionDiv').css('opacity', 0);
+    var url = 'DiarayList.html';
+    $.ajax({
+      url: url,
+      dataType: 'html',
+      success: function(data) {
+        setTimeout(function() {
+          $('#emotionDiv').html(data).css('opacity', 1);
+        }, 500);
+      }
+    });
+  });
+});
+
+
+
+// 비 내리는 함수
 var makeItRain = function() {
     //clear out everything
     $('.rain').empty();
@@ -24,12 +44,12 @@ var makeItRain = function() {
   }
   
   var arr = new Array();
-  arr = [1, 1, 1, 1, 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-
+  arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+                                                
   var arr2 = new Array();
   var arr3 = new Array();
-  arr2 = ["기쁨", "행복", "설렘", "즐거움", "평온", "슬픔", "아픔", "우울함", "절망", "외로움", "분노", "짜증", "혼란", "후회", "지루함", "부끄러움", "죄책감", "두려움", "놀람", "불안"];
-  arr3 = ["JOY", "HAPPINESS", "EXCITEMENT", "PLEASURE", "CALM", "SADNESS", "PAIN", "DEPRESSION", "DESPAIR", "LONELINESS", "ANGER", "ANNOYANCE", "CONFUSION",  "REGRET", "BOREDOM", "SHAME", "GUILT", "FEAR", "SURPRISE","ANXIETY"];
+  arr2 = ["기쁨", "행복", "설렘", "즐거움", "평온", "슬픔", "아픔", "우울함", "절망", "외로움", "지루함", "부끄러움", "죄책감", "두려움", "놀람", "분노", "짜증", "혼란", "후회", "불안"];
+  arr3 = ["JOY", "HAPPINESS", "EXCITEMENT", "PLEASURE", "CALM", "SADNESS", "PAIN", "DEPRESSION", "DESPAIR", "LONELINESS", "BOREDOM", "SHAME", "GUILT", "FEAR", "SURPRISE","ANGER", "ANNOYANCE", "CONFUSION",  "REGRET","ANXIETY"];
 
 // arr2 내용 html 화면에 출력
 var emotionDiv = document.createElement("div");
@@ -44,17 +64,21 @@ var emotionDiv = document.createElement("div");
       {
         span.className = "particletext hearts";
       }
-      if(i == 10)
+      if(i == 15)
       {
         span.className = "particletext fire";
+
       }
-      if(i == 12)
-        {
-            span.dataset.content = "혼란 CONFUSION";
-            
-        }
+      if(i == 17)
+      {
+          span.dataset.content = "혼란 CONFUSION";
+      }
+ 
+    
+        span.innerHTML = arr2[i] + "&nbsp;" + arr3[i] + "&nbsp; ";
+
         
-      span.innerHTML = arr2[i] + "&nbsp;" + arr3[i] + "&nbsp; ";
+     
       emotionDiv.appendChild(span);
   }
   document.body.appendChild(emotionDiv);
@@ -193,7 +217,7 @@ var emotionDiv = document.createElement("div");
   });
   
   $("#emotion2").hover(function() {
-    timeoutId2 = setTimeout(hearts, 1000)
+    timeoutId2 = setTimeout(hearts, 500);
  }, function() {
     clearTimeout(timeoutId2);
  });
@@ -289,19 +313,189 @@ targetText[5].addEventListener('mouseover', () => {
     targetText[5].style.transition = "color 0.5s ease";
     clearTimeout(timeoutId);
   });
-
+//아픔
+const band = document.getElementById("sickband");
+  targetText[6].addEventListener('mouseover', () => {
+    band.style.opacity = 1;
+    band.style.zIndex = 3;
+    
+    band.style.transition = "opacity 1s ease";
+    body.style.background = '#1984D5';
+    targetText[6].style.color = "white";
+    targetText[6].style.textShadow = "0 0 1px black";
+    targetText[6].style.transition = "opacity 1s color 1s ease";
+    for(var i = 0; i < 20; i++)
+    {
+        if(i != 6)
+        {
+          targetText[i].style.color = "#1677BF";
+          targetText[i].style.textShadow = "0 0 0px black";
+          targetText[i].style.transition = "color 0.0s ease";
+        }
+    }   
+  });
   
-  //분노 ANGER
-  targetText[10].addEventListener('mouseover', () => {
-    body.style.background = '#CC2A5D';
+  targetText[6].addEventListener('mouseout', () => {
+    body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    band.style.opacity = 0;
+    for(var i = 0; i < 20; i++)
+    {
+        
+        targetText[i].style.color = "#f1ebe5";
+        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+        targetText[i].style.transition = "color 0.0s ease";
 
-    targetText[10].style.color = "black";
-    targetText[10].style.transition = "color 6.0s ease";
-    targetText[10].style.textShadow = "0 0 0px black"
+    }
+    targetText[6].style.transition = "color 0.5s ease";
+  });
+  
+  //우울함
+  targetText[7].addEventListener('mouseover', () => {
+    body.style.background = '#1984D5';
+    targetText[7].style.color = "white";
+    targetText[7].style.textShadow = "0 0 1px black";
+    targetText[7].style.transition = "opacity 1s color 1s ease";
+
 
     for(var i = 0; i < 20; i++)
     {
-        if(i != 10)
+        if(i != 7)
+        {
+          targetText[i].style.color = "#1677BF";
+          targetText[i].style.textShadow = "0 0 0px black";
+          targetText[i].style.transition = "color 0.0s ease";
+        }
+    }
+  });
+
+  targetText[7].addEventListener('mouseout', () => {
+    body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    for(var i = 0; i < 20; i++)
+    {
+  
+        targetText[i].style.color = "#f1ebe5";
+        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+        targetText[i].style.transition = "color 0.0s ease";
+
+    }
+  });
+//절망
+  targetText[8].addEventListener('mouseover', () => {
+    body.style.background = '#1984D5';
+    targetText[8].style.color = "white";
+    targetText[8].style.textShadow = "0 0 1px black";
+    targetText[8].style.transition = "opacity 1s color 1s ease";
+
+
+    for(var i = 0; i < 20; i++)
+    {
+        if(i != 8)
+        {
+          targetText[i].style.color = "#1677BF";
+          targetText[i].style.textShadow = "0 0 0px black";
+          targetText[i].style.transition = "color 0.0s ease";
+        }
+    }
+  });
+
+  targetText[8].addEventListener('mouseout', () => {
+    body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    for(var i = 0; i < 20; i++)
+    {
+  
+        targetText[i].style.color = "#f1ebe5";
+        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+        targetText[i].style.transition = "color 0.0s ease";
+
+    }
+  });
+//외로움
+  targetText[9].addEventListener('mouseover', () => {
+    body.style.background = '#1984D5';
+    targetText[9].style.color = "white";
+    targetText[9].style.textShadow = "0 0 1px black";
+    targetText[9].style.transition = "opacity 1s color 1s ease";
+
+
+    for(var i = 0; i < 20; i++)
+    {
+        if(i != 9)
+        {
+          targetText[i].style.color = "#1677BF";
+          targetText[i].style.textShadow = "0 0 0px black";
+          targetText[i].style.transition = "color 0.0s ease";
+        }
+    }
+  });
+
+  targetText[9].addEventListener('mouseout', () => {
+    body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    for(var i = 0; i < 20; i++)
+    {
+  
+        targetText[i].style.color = "#f1ebe5";
+        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+        targetText[i].style.transition = "color 0.0s ease";
+
+    }
+  });
+
+  
+
+
+  function getguilty(element) {
+    element.classList.add('guilty');
+}
+function removeguilty(element){
+    element.classList.remove('guilty');
+  }
+  
+// 죄책감 GUILT
+  targetText[12].addEventListener('mouseover', () => {
+    body.style.background = '#f6ddff';
+    targetText[12].style.color = "DarkViolet";
+    targetText[12].style.removeProperty("text-shadow");
+    targetText[12].style.transition = "text-Shadow 1.0s, color 3.0s ease";
+    getguilty(targetText[12]);
+    
+    for(var i = 0; i < 20; i++)
+    {
+      if(i != 12)
+      {
+        targetText[i].style.color = "#d4bbdd";
+        targetText[i].style.textShadow = "0 0 0px black";
+        targetText[i].style.transition = "color 0.0s ease";
+      }
+    }
+  });
+
+targetText[12].addEventListener('mouseout', () => {
+    body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    for(var i = 0; i < 20; i++)
+    {
+      if( i != 12)
+      {
+        targetText[i].style.color = "#f1ebe5";
+        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+        targetText[i].style.transition = "color 0.0s ease";
+      }
+      targetText[12].style.color = "#f1ebe5";
+      removeguilty(targetText[12]);
+    }
+    
+  });
+
+  //분노 ANGER
+  targetText[15].addEventListener('mouseover', () => {
+    body.style.background = '#CC2A5D';
+
+    targetText[15].style.color = "black";
+    targetText[15].style.transition = "color 6.0s ease";
+    targetText[15].style.textShadow = "0 0 0px black"
+
+    for(var i = 0; i < 20; i++)
+    {
+        if(i != 15)
         {
             targetText[i].style.color = "#9B2248";
             targetText[i].style.textShadow = "0 0 0px black";
@@ -310,8 +504,8 @@ targetText[5].addEventListener('mouseover', () => {
     }
     timeoutId3 = setTimeout(fire, 1000);
   });
-//분노 ANGER
-targetText[10].addEventListener('mouseout', () => {
+
+  targetText[15].addEventListener('mouseout', () => {
     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
     for(var i = 0; i < 20; i++)
     {
@@ -319,38 +513,76 @@ targetText[10].addEventListener('mouseout', () => {
             targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
             targetText[i].style.transition = "color 0.0s ease";
     }
-    targetText[10].style.transition = "color 4.0s ease";
+    targetText[15].style.transition = "color 4.0s ease";
     clearTimeout(timeoutId3);
   });
-
-
-  
-//혼란 CONFUSION
-targetText[12].addEventListener('mouseover', () => {
+//짜증
+  targetText[16].addEventListener('mouseover', () => {
     body.style.background = '#CC2A5D';
+    targetText[16].style.color = "white";
+    targetText[16].style.textShadow = "0 0 1px black";
+    targetText[16].style.transition = "opacity 1s color 1s ease";
 
-    targetText[12].style.color = "white";
-    targetText[12].style.textShadow = "0 1px 10px black";
 
     for(var i = 0; i < 20; i++)
     {
-        if(i != 12)
+        if(i != 16)
+        {
+          targetText[i].style.color = "#9B2248";
+          targetText[i].style.textShadow = "0 0 0px black";
+          targetText[i].style.transition = "color 0.0s ease";
+        }
+    }
+  });
+
+  targetText[16].addEventListener('mouseout', () => {
+    body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    for(var i = 0; i < 20; i++)
+    {
+  
+        targetText[i].style.color = "#f1ebe5";
+        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+        targetText[i].style.transition = "color 0.0s ease";
+
+    }
+  });
+
+
+
+  
+  
+//혼란 CONFUSION
+targetText[17].addEventListener('mouseover', () => {
+    body.style.background = '#CC2A5D';
+    
+    targetText[17].style.color = "white";
+    targetText[17].style.textShadow = "0 1px 10px black";
+
+    for(var i = 0; i < 20; i++)
+    {
+        if(i != 17)
         {
             targetText[i].style.color = "#9B2248";
             targetText[i].style.textShadow = "0 0 0px black";
             targetText[i].style.transition = "color 0.0s ease";
+            
         }
     }
+    removeguilty(targetText[12]);
   });
 //혼란 CONFUSION
-targetText[12].addEventListener('mouseout', () => {
+targetText[17].addEventListener('mouseout', () => {
     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+    removeguilty(targetText[12]);
     for(var i = 0; i < 20; i++)
     {
-            targetText[i].style.color = "#f1ebe5";
-            targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
-            targetText[i].style.transition = "color 0.0s ease";
+
+      targetText[i].style.color = "#f1ebe5";
+      targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
+      targetText[i].style.transition = "color 0.0s ease";
+            
     }
+    getguilty(targetText[12]);
   });
 
   // 텍스트 암호화

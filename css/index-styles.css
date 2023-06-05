@@ -32,6 +32,7 @@ html {
       /*background: rgb(25, 132, 213);*/
       background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
       transition: background-color 1.2s ease;
+
   }
 
   body::-webkit-scrollbar
@@ -151,6 +152,8 @@ html {
 {
     position: relative;
     left: 3%;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 #emotion0:hover
@@ -355,6 +358,7 @@ html {
   text-shadow: 0 0 10px rgb(134, 116, 86);
 }
 
+
 #emotion6:hover
 {
   color: white;
@@ -374,44 +378,23 @@ html {
 {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
+  
 }
+
 #emotion10:hover
 {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
+  
 }
 #emotion11:hover
 {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
 }
-#emotion12:hover
+#emotion12
 {
-  color: white;
-  text-shadow: 0 0 10px rgb(134, 116, 86);
-  position: relative;
-    display: inline-block;
-    text-decoration: none;
-    &:before,
-    &:after {
-        content:attr(data-content);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    &:before {
-        color: #00ffff;
-        z-index: -1;
-        animation: glitchy 0.3s ease 0.3s infinite;
-    }
-
-    &:after {
-        color: #ff00ff;
-        z-index: -2;
-        animation: glitchy 0.3s ease infinite reverse;
-    }
+  transition:text-shadow 1s, color 1s;
 }
 #emotion13:hover
 {
@@ -471,10 +454,198 @@ html {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
 }
+
+.guilty
+{
+  transition:text-shadow 1s, color 3s;
+  color: white;
+  text-shadow:
+  -1em -1em 0em rgba(70,38,121,0.25),
+  -2em -2em 0em rgba(70,38,121,0.25),
+  -3em -3em 0em rgba(70,38,121,0.25),
+  -4em -4em 0em rgba(70,38,121,0.5),
+  -5em -5em 0em rgba(70,38,121,0.5),
+  -6em -6em 0em rgba(70,38,121,0.5),
+  -7em -7em 0em rgba(70,38,121,0.5),
+  -8em -8em 0em rgba(70,38,121,0.5),
+  -9em -9em 0em rgba(70,38,121,0.5),
+  -10em -10em 0em rgba(70,38,121,0.5),
+  -11em -11em 0em rgba(70,38,121,0.5),
+  -12em -12em 0em rgba(70,38,121,0.5),
+  -13em -13em 0em rgba(70,38,121,0.5),
+  -14em -14em 0em rgba(70,38,121,0.5),
+  -15em -15em 0em rgba(70,38,121,0.5),
+  -16em -16em 0em rgba(70,38,121,0.5),
+  1em 1em 0em rgba(70,38,121,0.25),
+  2em 2em 0em rgba(70,38,121,0.25),
+  3em 3em 0em rgba(70,38,121,0.25),
+  4em 4em 0em rgba(70,38,121,0.5),
+  5em 5em 0em rgba(70,38,121,0.5),
+  6em 6em 0em rgba(70,38,121,0.5),
+  7em 7em 0em rgba(70,38,121,0.5),
+  8em 8em 0em rgba(70,38,121,0.5),
+  9em 9em 0em rgba(70,38,121,0.5),
+  10em 10em 0em rgba(70,38,121,0.5),
+  11em 11em 0em rgba(70,38,121,0.5),
+  12em 12em 0em rgba(70,38,121,0.5),
+  13em 13em 0em rgba(70,38,121,0.5),
+  14em 14em 0em rgba(70,38,121,0.5),
+  15em 15em 0em rgba(70,38,121,0.5),
+  16em 16em 0em rgba(70,38,121,0.5),
+  8em 0em 0em rgba(70,38,121,0.25),
+  7em -1em 0em rgba(70,38,121,0.25),
+  6em -2em 0em rgba(70,38,121,0.25),
+  5em -3em 0em rgba(70,38,121,0.25),
+  4em -4em 0em rgba(70,38,121,0.5),
+  3em -5em 0em rgba(70,38,121,0.5),
+  2em -6em 0em rgba(70,38,121,0.5),
+  1em -7em 0em rgba(70,38,121,0.5),
+  0em -8em 0em rgba(70,38,121,0.5),
+-1em -9em 0em rgba(70,38,121,0.5),
+-2em -10em 0em rgba(70,38,121,0.5),
+-3em -11em 0em rgba(70,38,121,0.5),
+-4em -12em 0em rgba(70,38,121,0.5),
+-5em -13em 0em rgba(70,38,121,0.5),
+-6em -14em 0em rgba(70,38,121,0.5),
+-7em -15em 0em rgba(70,38,121,0.5),
+-8em -16em 0em rgba(70,38,121,0.5),
+-9em -17em 0em rgba(70,38,121,0.5),
+-10em -18em 0em rgba(70,38,121,0.5),
+-11em -19em 0em rgba(70,38,121,0.5),
+16em 0em 0em rgba(70,38,121,0.5),
+15em -1em 0em rgba(70,38,121,0.5),
+14em -2em 0em rgba(70,38,121,0.5),
+13em -3em 0em rgba(70,38,121,0.5),
+12em -4em 0em rgba(70,38,121,0.5),
+11em -5em 0em rgba(70,38,121,0.5),
+10em -6em 0em rgba(70,38,121,0.5),
+9em -7em 0em rgba(70,38,121,0.5),
+8em -8em 0em rgba(70,38,121,0.5),
+7em -9em 0em rgba(70,38,121,0.5),
+6em -10em 0em rgba(70,38,121,0.5),
+5em -11em 0em rgba(70,38,121,0.5),
+4em -12em 0em rgba(70,38,121,0.5),
+3em -13em 0em rgba(70,38,121,0.5),
+2em -14em 0em rgba(70,38,121,0.5),
+1em -15em 0em rgba(70,38,121,0.5),
+0em -16em 0em rgba(70,38,121,0.5),
+-1em -17em 0em rgba(70,38,121,0.5),
+-2em -18em 0em rgba(70,38,121,0.5),
+-3em -19em 0em rgba(70,38,121,0.5),
+9em 1em 0em rgba(70,38,121,0.25),
+10em 2em 0em rgba(70,38,121,0.25),
+11em 3em 0em rgba(70,38,121,0.25),
+12em 4em 0em rgba(70,38,121,0.5),
+13em 5em 0em rgba(70,38,121,0.5),
+14em 6em 0em rgba(70,38,121,0.5),
+15em 7em 0em rgba(70,38,121,0.5),
+16em 8em 0em rgba(70,38,121,0.5),
+17em 9em 0em rgba(70,38,121,0.5),
+18em 10em 0em rgba(70,38,121,0.5),
+19em 11em 0em rgba(70,38,121,0.5),
+20em 12em 0em rgba(70,38,121,0.5),
+21em 13em 0em rgba(70,38,121,0.5),
+22em 14em 0em rgba(70,38,121,0.5),
+23em 15em 0em rgba(70,38,121,0.5),
+17em 1em 0em rgba(70,38,121,0.5),
+18em 2em 0em rgba(70,38,121,0.5),
+19em 3em 0em rgba(70,38,121,0.5),
+20em 4em 0em rgba(70,38,121,0.5),
+21em 5em 0em rgba(70,38,121,0.5),
+22em 6em 0em rgba(70,38,121,0.5),
+23em 7em 0em rgba(70,38,121,0.5),
+-8em 0em 0em rgba(70,38,121,0.25),
+-7em 1em 0em rgba(70,38,121,0.25),
+-6em 2em 0em rgba(70,38,121,0.25),
+-5em 3em 0em rgba(70,38,121,0.25),
+-4em 4em 0em rgba(70,38,121,0.5),
+-3em 5em 0em rgba(70,38,121,0.5),
+-2em 6em 0em rgba(70,38,121,0.5),
+-1em 7em 0em rgba(70,38,121,0.5),
+0em 8em 0em rgba(70,38,121,0.5),
+1em 9em 0em rgba(70,38,121,0.5),
+2em 10em 0em rgba(70,38,121,0.5),
+  3em 11em 0em rgba(70,38,121,0.5),
+  4em 12em 0em rgba(70,38,121,0.5),
+  5em 13em 0em rgba(70,38,121,0.5),
+  6em 14em 0em rgba(70,38,121,0.5),
+  7em 15em 0em rgba(70,38,121,0.5),
+  8em 16em 0em rgba(70,38,121,0.5),
+  9em 17em 0em rgba(70,38,121,0.5),
+  10em 18em 0em rgba(70,38,121,0.5),
+  11em 19em 0em rgba(70,38,121,0.5),
+  -16em 0em 0em rgba(70,38,121,0.5),
+  -15em 1em 0em rgba(70,38,121,0.5),
+  -14em 2em 0em rgba(70,38,121,0.5),
+  -13em 3em 0em rgba(70,38,121,0.5),
+  -12em 4em 0em rgba(70,38,121,0.5),
+  -11em 5em 0em rgba(70,38,121,0.5),
+  -10em 6em 0em rgba(70,38,121,0.5),
+  -9em 7em 0em rgba(70,38,121,0.5),
+  -8em 8em 0em rgba(70,38,121,0.5),
+  -7em 9em 0em rgba(70,38,121,0.5),
+  -6em 10em 0em rgba(70,38,121,0.5),
+  -5em 11em 0em rgba(70,38,121,0.5),
+  -4em 12em 0em rgba(70,38,121,0.5),
+  -3em 13em 0em rgba(70,38,121,0.5),
+  -2em 14em 0em rgba(70,38,121,0.5),
+  -1em 15em 0em rgba(70,38,121,0.5),
+  0em 16em 0em rgba(70,38,121,0.5),
+  -9em -1em 0em rgba(70,38,121,0.25),
+  -10em -2em 0em rgba(70,38,121,0.25),
+  -11em -3em 0em rgba(70,38,121,0.25),
+  -12em -4em 0em rgba(70,38,121,0.5),
+  -13em -5em 0em rgba(70,38,121,0.5),
+  -14em -6em 0em rgba(70,38,121,0.5),
+  -15em -7em 0em rgba(70,38,121,0.5),
+  -16em -8em 0em rgba(70,38,121,0.5),
+  -17em -9em 0em rgba(70,38,121,0.5),
+  -18em -10em 0em rgba(70,38,121,0.5),
+  -19em -11em 0em rgba(70,38,121,0.5),
+  -20em -12em 0em rgba(70,38,121,0.5),
+  -21em -13em 0em rgba(70,38,121,0.5),
+  -22em -14em 0em rgba(70,38,121,0.5),
+  -23em -15em 0em rgba(70,38,121,0.5),
+  -24em -16em 0em rgba(70,38,121,0.5),
+  -17em -1em 0em rgba(70,38,121,0.5),
+  -18em -2em 0em rgba(70,38,121,0.5),
+  -19em -3em 0em rgba(70,38,121,0.5),
+  -20em -4em 0em rgba(70,38,121,0.5),
+  -21em -5em 0em rgba(70,38,121,0.5),
+  -22em -6em 0em rgba(70,38,121,0.5),
+  -23em -7em 0em rgba(70,38,121,0.5),
+  -24em -8em 0em rgba(70,38,121,0.5)
+  ;
+  transition:text-shadow 1s, color 3s;
+}
+
 #emotion17:hover
 {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
+  position: relative;
+    display: inline-block;
+    text-decoration: none;
+    &:before,
+    &:after {
+        content:attr(data-content);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    &:before {
+        color: #00ffff;
+        z-index: -1;
+        animation: glitchy 0.3s ease 0.3s infinite;
+    }
+
+    &:after {
+        color: #ff00ff;
+        z-index: -2;
+        animation: glitchy 0.3s ease infinite reverse;
+    }
 }
 #emotion18:hover
 { 
@@ -494,3 +665,209 @@ html {
     color: white;
     text-shadow: 0 0 10px rgb(134, 116, 86);
 }
+
+
+#gotodiarylist
+{
+  position: fixed;
+  right: 0%;
+  height: 100%;
+  width: 7%;
+  z-index: 2;
+}
+
+#gotodiarylist:hover
+{
+  background-color: gray;
+  opacity: 0.1;
+}
+
+button {
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  outline:0;
+  opacity: 1;
+}
+
+svg {
+  padding: 5px;
+  opacity: 1;
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  margin-top: -45px;
+  margin-left: -35px;
+  width: 70px;
+  opacity: 1;
+  height: 90px;
+}
+
+.left {
+  left: 42%;
+}
+
+.right {
+  left: 58%;
+}
+
+.left:hover polyline,
+.left:focus polyline {
+  stroke-width: 3;
+}
+
+.left:active polyline {
+  stroke-width: 6;
+  transition: all 100ms ease-in-out;
+}
+
+.right:hover polyline,
+.right:focus polyline {
+  stroke-width: 3;
+}
+
+.right:active polyline {
+  stroke-width: 6;
+  transition: all 100ms ease-in-out;
+}
+
+polyline {
+  transition: all 250ms ease-in-out;
+}  
+
+
+#sickband
+{
+  opacity: 0;
+  z-index: -1;
+}
+  .container > * {
+    position: absolute;
+    top: 21%;
+    right: 2%;
+    rotate: 45deg;
+  }
+
+  
+  .band {
+    margin-left: -4.5rem;
+    border-radius: 30px;
+    height: 8rem;
+    width: 25rem;
+    background-color: #E5C09E;
+    background: radial-gradient(#E6D5AB 15%, transparent 16%), radial-gradient(#E6D5AB 15%, transparent 16%);
+    background-size: 10px 10px;
+    background-position: 0 0, 30px 30px; }
+    .band:before, .band:after {
+      position: absolute;
+      content: ''; }
+    .band:before {
+      z-index: 0;
+      border-radius: 30px;
+      height: 8rem;
+      width: 25rem;
+      background-color: #E5C09E;
+      box-shadow: 3px 3px 20px #A78C73; }
+    .band:after {
+      border-radius: 20px;
+      height: 5.5rem;
+      width: 12rem;
+      background: #fcf1da;
+      margin-left: 7rem;
+      margin-top: 1.3rem; }
+  
+  .eye {
+    z-index: 3;
+    position: absolute;
+    border-radius: 100%;
+    height: 1rem;
+    width: 1rem;
+    background-color: #695848;
+    margin-left: 10rem;
+    margin-top: 2.5rem; }
+    .eye:before {
+      position: absolute;
+      content: '';
+      height: 1rem;
+      width: 1rem;
+      border-radius: 100%;
+      background-color: #695848;
+      transform: translateX(5rem); }
+  
+  .mouth {
+    z-index: 3;
+    position: absolute;
+    height: .7rem;
+    width: 4rem;
+    background-color: #695848;
+    border-radius: 100%;
+    margin-left: 11rem;
+    margin-top: 4rem; }
+    .mouth:before, .mouth:after {
+      content: '';
+      position: absolute;
+      border-top: 15px solid #FDF9F3;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      margin-left: .8rem; }
+    .mouth:before {
+      margin-left: 2.5rem; }
+  
+  .drip {
+    z-index: 3;
+    position: absolute;
+    width: 7px;
+    height: 12px;
+    background: #C33149;
+    border-radius: 0 0 100% 100%;
+    margin-left: 11.5rem;
+    margin-top: 4.49rem; }
+  
+  .blood {
+    z-index: -1;
+    position: absolute;
+    height: 2rem;
+    width: 10rem;
+    background-color: #C33149;
+    margin-top: 7rem;
+    margin-left: 8rem;
+    border-radius: 0 0 100px 100px; }
+    .blood:before, .blood:after {
+      height: 5rem;
+      width: 2rem;
+      position: absolute;
+      content: '';
+      background: #C33149;
+      border-radius: 0 0 100% 100%;
+      animation: 4s drip infinite ease; }
+    .blood:before {
+      margin-left: 3rem;
+      margin-top: -1rem; }
+  
+  .shine {
+    z-index: 2;
+    position: absolute;
+    background: #FFF;
+    height: 2rem;
+    width: .3rem;
+    border-radius: 12px;
+    animation: 4s drip infinite ease;
+    margin-top: 2rem;
+    margin-left: .3rem; }
+    .shine:before {
+      content: '';
+      position: absolute;
+      background: #FFF;
+      height: .6rem;
+      width: .3rem;
+      margin-left: 3.2rem;
+      border-radius: 12px; }
+  
+  @keyframes drip {
+    100% {
+      transform: translateY(10px); } }
+  
+  /*# sourceMappingURL=style.css.map */
