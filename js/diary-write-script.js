@@ -19,6 +19,8 @@ let BtnString="";
 let EmotionList=[];
 function BtnSelect(BtnString){
 
+    changeColor(BtnString);
+
     let idx = EmotionList.indexOf(BtnString);
 
     if(idx==-1){
@@ -97,4 +99,117 @@ function select(){
 
     console.log(ageValue);
     console.log(EmotionCntList);
+}
+
+/*
+* 감정 버튼 클릭 시 배경 변경
+*/
+function changeColor(BtnString){
+    if(BtnString=="기쁨"){
+        changeJoy(joy1);
+    } else if(BtnString=="행복"){
+        changeJoy(joy2);
+    } else if(BtnString=="설렘"){
+        changeJoy(joy3);
+    } else if(BtnString=="즐거움"){
+        changeJoy(joy4);
+    } else if(BtnString=="평온"){
+        changeJoy(joy5);
+    } else if(BtnString=="슬픔"){
+        changeSadness(sadness1);
+    } else if(BtnString=="아픔"){
+        changeSadness(sadness2);
+    } else if(BtnString=="우울함"){
+        changeSadness(sadness3);
+    } else if(BtnString=="절망"){
+        changeSadness(sadness4);
+    } else if(BtnString=="외로움"){
+        changeSadness(sadness5);
+    } else if(BtnString=="지루함"){
+        changeTimid(timid1);
+    } else if(BtnString=="부끄러움"){
+        changeTimid(timid2);
+    } else if(BtnString=="죄책감"){
+        changeTimid(timid3);
+    } else if(BtnString=="두려움"){
+        changeTimid(timid4);
+    } else if(BtnString=="놀람"){
+        changeTimid(timid5);
+    } else if(BtnString=="분노"){
+        changeAnger(anger1);
+    } else if(BtnString=="짜증"){
+        changeAnger(anger2);
+    } else if(BtnString=="혼란"){
+        changeAnger(anger3);
+    } else if(BtnString=="후회"){
+        changeAnger(anger4);
+    } else if(BtnString=="불안"){
+        changeAnger(anger5);
+    }
+}
+
+function changeJoy(joyId){
+    let currentColor = joyId.style.backgroundColor;
+
+    if (currentColor === "rgb(255, 242, 120)") {
+        joyId.style.backgroundColor = "#fffadb";
+    } else {
+        joyId.style.backgroundColor = "rgb(255, 242, 120)";
+    }
+}
+
+function changeSadness(sadnessId){
+    let currentColor = sadnessId.style.backgroundColor;
+
+    if (currentColor === "rgb(157, 180, 255)") {
+        sadnessId.style.backgroundColor = "#e4eaff";
+    } else {
+        sadnessId.style.backgroundColor = "rgb(157, 180, 255)";
+    }
+}
+
+function changeTimid(timidId){
+    let currentColor = timidId.style.backgroundColor;
+
+    if (currentColor === "rgb(208, 137, 239)") {
+        timidId.style.backgroundColor = "#f6e9ff";
+    } else {
+        timidId.style.backgroundColor = "rgb(208, 137, 239)";
+    }
+}
+
+function changeAnger(angerId){
+    let currentColor = angerId.style.backgroundColor;
+
+    if (currentColor === "rgb(255, 128, 109)") {
+        angerId.style.backgroundColor = "#ffe4e4";
+    } else {
+        angerId.style.backgroundColor = "rgb(255, 128, 109)";
+    }
+}
+
+function resetColor(){
+    joy1.style.backgroundColor = "#fffadb";
+    joy2.style.backgroundColor = "#fffadb";
+    joy3.style.backgroundColor = "#fffadb";
+    joy4.style.backgroundColor = "#fffadb";
+    joy5.style.backgroundColor = "#fffadb";
+    
+    sadness1.style.backgroundColor = "#e4eaff";
+    sadness2.style.backgroundColor = "#e4eaff";
+    sadness3.style.backgroundColor = "#e4eaff";
+    sadness4.style.backgroundColor = "#e4eaff";
+    sadness5.style.backgroundColor = "#e4eaff";
+    
+    timid1.style.backgroundColor = "#f6e9ff";
+    timid2.style.backgroundColor = "#f6e9ff";
+    timid3.style.backgroundColor = "#f6e9ff";
+    timid4.style.backgroundColor = "#f6e9ff";
+    timid5.style.backgroundColor = "#f6e9ff";
+    
+    anger1.style.backgroundColor = "#ffe4e4";
+    anger2.style.backgroundColor = "#ffe4e4";
+    anger3.style.backgroundColor = "#ffe4e4";
+    anger4.style.backgroundColor = "#ffe4e4";
+    anger5.style.backgroundColor = "#ffe4e4";
 }

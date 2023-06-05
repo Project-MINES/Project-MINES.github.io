@@ -14,7 +14,6 @@
     width: 50%;
     height:650px;
     background-color: #ffffff;
-    border: 1px solid black;
     border-right: none;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
@@ -26,38 +25,52 @@
 
     float: right;
     padding: 50px;
+    padding-top:0px;
     width: 50%;
     height:650px;
     background-color: #ffffff;
-    border: 1px solid black;
-    border-left: 1px dotted;
+    border-left: 1px dotted #e5d6c1;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
 
 body {
-    margin: 150px;
+
+    opacity: 0;
+    transition: opacity 1s ease-in;
+
+    margin-top:140px;
+    margin-bottom: 150px;
     margin-left:400px;
     margin-right:400px;
     padding: 0;
     font-family: 'NanumBarunGothic';
 
-    background-color: #282828c7;
+    background-color: #e5d6c1c7;
+}
+
+#intro{
+    margin-left:2%;
+    margin-bottom: 0px;
+    color: #918575;
+    font-size: 18px;
 }
 
 #SelectEmotionText{
     /* background-color: azure; */
     font-size: 20px;
-    color: #6e6e6e;
+    color: #3a1f0a8e;
+    margin-left:4%;
+    margin-top:10%;
 }
 
 /* Emotion button */
 #EmotionBtn{
     /* background-color: beige; */
-    margin-top:60px;
+    margin-top:8%;
 }
 
-.joy, .sadness, .anger, .timid{
+.joy_div>button, .sadness_div>button, .anger_div>button, .timid_div>button{
     width: 70px;
     height: 70px;
 
@@ -71,7 +84,65 @@ body {
     border-radius: 50px;
 }
 
+.joy_div>button{
+    background: #fffadb;
+    box-shadow: inset 0px 4px 4px rgba(142, 131, 32, 0.25);
+}
+
+.sadness_div>button{
+    background: #e4eaff;
+    box-shadow: inset 0px 4px 4px rgba(34, 39, 123, 0.25);
+}
+
+.timid_div>button{
+    background: #f6e9ff;
+    box-shadow: inset 0px 4px 4px rgba(163, 45, 202, 0.25);
+}
+
+.anger_div>button{
+    background: #ffe4e4;
+    box-shadow: inset 0px 4px 4px rgba(202, 45, 45, 0.25);
+}
+
+.joy_div>button:hover, .sadness_div>button:hover, .anger_div>button:hover, .timid_div>button:hover{
+    cursor:pointer;
+}
+
+.joy_div>button:hover{
+    background-color: rgb(255, 242, 120);
+}
+
+.sadness_div>button:hover{
+    background-color: rgb(157, 180, 255);
+}
+
+.timid_div>button:hover{
+    background-color: rgb(208, 137, 239);
+} 
+
+.anger_div>button:hover{
+    background-color: rgb(255, 128, 109);
+}
+
 /* 오른쪽 내용 */
+
+#close_div{
+    width:auto;
+    height:50px;
+}
+
+#CloseBtn{
+    margin-left:99%;
+    margin-top:4.5%;
+
+    background-color:transparent;
+    border:none;
+}
+
+#CloseBtn:hover{
+    cursor: pointer;
+}
+
 #Date_div{
     /* background-color: rgb(211, 198, 251); */
     position: relative;
@@ -82,11 +153,28 @@ body {
 
 #date{
     float: left;
+    color: #3a1f0a;
 }
 
-#save{
-    float: right;
-    background-color: rgb(181, 181, 246);
+/* diary save button */
+#save {
+    
+    position: absolute;
+    bottom: 30%;
+    left:80%;
+
+    font-size: 15px;
+    background-color: #fbf5ee;
+    color: #562e10;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#save:hover {
+    color: white;
+    background-color: rgb(104, 104, 104);
 }
 
 /* form 태그 내용 */
@@ -123,26 +211,6 @@ input[type="date"] {
     outline: none;
 }
 
-/* diary save button */
-#save {
-    
-    position: absolute;
-    bottom: 30%;
-    left:82%;
-
-    font-size: 15px;
-    background-color: rgb(233, 233, 233);
-    color: #555555;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#save:hover {
-    color: white;
-    background-color: rgb(104, 104, 104);
-}
 
 input[type="text"]{
     width: 95%;
@@ -153,9 +221,12 @@ input[type="text"]{
     outline: none;
     padding-left: 10px;
     background-color: rgb(233, 233, 233);
+    background: #fbf5ee;
+    box-shadow: inset 0px 2px 2px rgba(162, 99, 35, 0.25);
+}
 
-    background: #ebebeb;
-    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+input[type="text"]::placeholder, textarea::placeholder{
+    color: #3a1f0a;
 }
 
 textarea{
