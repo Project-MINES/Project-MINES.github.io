@@ -9,14 +9,33 @@
     <meta http-equiv="Page-Exit" content="BlendTrans(Duration=1.0)">
     <script src="//code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/diary-list-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         body {
+            opacity: 0;
             background-color: #e5d6c1c7;
         }
     </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+          var opacity = 0;
+          var timer = setInterval(function() {
+            opacity += 0.01; 
+            document.body.style.opacity = opacity;
+            if (opacity >= 1) {
+              clearInterval(timer);
+            }
+          }, 10);
+        });
+    </script>
 </head>
 <body>
     <h1>일기 목록</h1>
+    <div id="nav"> 
+        <p><a href="DiaryWrite.html"><span class="material-symbols-outlined">
+            edit_note
+            </span></a></p>
+    </div>
     <ul id="polaroidContainer" class="diary-list"></ul>
     <script src="/js/diary-list-script.js"></script>
 </div>
