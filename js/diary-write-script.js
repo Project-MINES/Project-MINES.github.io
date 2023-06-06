@@ -46,6 +46,13 @@ function DiaryWrite(event){
     let content = document.querySelector('#Content_div textarea').value;
     let tag = document.querySelector('#Tag_div input').value;
 
+    //태그 내용 #으로 분리 (공백 처리 O)
+    let tagArr = tag.split("#").map(function(item) {
+        return item.trim();
+    }).filter(function(item) {
+        return item !== "";
+    });
+
     let idx = -1;
 
     //감정을 선택하지 않았다면 일기 저장 X && 같은 날짜 중복 일기 작성 X
@@ -74,11 +81,13 @@ function DiaryWrite(event){
             Date: date,
             Title: title,
             Content: content,
-            Tag : tag,
+            Tag : tagArr,
             Emotion : EmotionList
         };
         
         localStorage.setItem(date, JSON.stringify(DiaryData));
+        alert("일기가 저장되었습니다.");
+        window.location.href = "DiaryList.html";
         
     } else{
         if(EmotionList.length==0)
@@ -93,12 +102,7 @@ function DiaryWrite(event){
 /*
 * 테스트용 함수
 */
-function select(){
-    let storedData = JSON.parse(localStorage.getItem(date));
-    let ageValue = storedData.Emotion[0];
-
-    console.log(ageValue);
-    console.log(EmotionCntList);
+function test(){
 }
 
 /*
