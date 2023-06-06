@@ -10,7 +10,12 @@
     <meta http-equiv="Page-Exit" content="BlendTrans(Duration=1.0)">
 </head>
 <!-- check the Comments for more info -->
-
+<style>
+        body {
+          opacity: 0;
+          transition: opacity 1s ease-in;
+        }
+</style>
 <body>
     <div class="rain front-row"></div>
     <div class="rain back-row"></div>
@@ -32,6 +37,21 @@
           <div class="drip"></div>
         </div>
       </div>
+      <div class="button_container">
+        <button class="btn"><span>CHANGE</span></button>
+      </div>
+      <script>
+        window.addEventListener('DOMContentLoaded', function() {
+        // 페이드 인 효과를 위해 setTimeout을 사용하여 10밀리초마다 투명도를 증가시킴
+        var opacity = 0;
+        var timer = setInterval(function() {
+          opacity += 0.01; // 투명도 값을 조절하여 원하는 속도로 페이드 인 효과를 조정할 수 있음
+          document.body.style.opacity = opacity;
+          if (opacity >= 1) {
+            clearInterval(timer); // 투명도가 1에 도달하면 타이머를 중지함
+          }
+        }, 10);
+      });</script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/index-script.js"></script>   
 </body>

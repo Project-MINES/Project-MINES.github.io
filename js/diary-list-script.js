@@ -126,3 +126,63 @@ renderDiaryList(diaryList);
 
 // 페이지 로딩 시 일기 목록 초기화 및 로딩
 loadDiaryList();
+
+// 폴라로이드 확대 보기 이벤트 처리
+function showDiaryDetail(diaryData) {
+  // 기존 폴라로이드 숨기기
+  document.getElementById("polaroidContainer").style.display = "none";
+  
+
+  // 확대 보기 컨테이너 생성
+  const detailContainer = document.createElement("div");
+  detailContainer.id = "diaryDetail";
+
+  // 확대 보기 컨테이너에 fade-in 클래스 추가
+  detailContainer.classList.add("fade-in");
+  
+  // 확대 보기 내용 생성
+  const content = document.createElement("div");
+  content.className = "content";
+  content.textContent = diaryData.Content;
+  detailContainer.appendChild(content);
+  
+  // 일기 제목 생성
+  const title = document.createElement("h2");
+  title.textContent = diaryData.Title;
+  detailContainer.appendChild(title);
+  
+  // 일기 날짜 생성
+  const date = document.createElement("p");
+  date.textContent = diaryData.Date;
+  detailContainer.appendChild(date);
+
+  
+  
+  // 닫기 버튼 생성
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "닫기";
+  closeButton.addEventListener("click", function() {
+    // 확대 보기 컨테이너 닫기
+    document.getElementById("diaryDetail").remove();
+    // 폴라로이드 목록 다시 표시
+    document.getElementById("polaroidContainer").style.display = "flex";
+  });
+  detailContainer.appendChild(closeButton);
+  
+  // 확대 보기 컨테이너를 body에 추가
+  document.body.appendChild(detailContainer);
+}
+
+// 폴라로이드제목 클릭 이벤트에 확대 보기 기능 연결
+const titleElements = document.querySelectorAll("#polaroidContainer .polaroid h5");
+titleElements.forEach((titleElement) => {
+  titleElement.addEventListener("click", () => {
+    const diaryData = getDiaryDataFromTitle(titleElement.textContent);
+    showDiaryDetail(diaryData);
+  });
+});
+
+// 제목으로부터 일기 데이터 가져오기
+function getDiaryDataFromTitle(title) {
+  return currentDiaryList.find((diaryData) => diaryData.Title === title);
+}

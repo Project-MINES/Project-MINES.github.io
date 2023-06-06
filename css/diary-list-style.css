@@ -112,7 +112,6 @@ polyline {
   position: relative;
   padding: 10px 10px;
   box-sizing: border-box;
-  cursor: pointer;
   margin-right: 20px; /* 오른쪽 마진 설정 */
   margin-bottom: 20px; /* 아래쪽 마진 설정 */
 }
@@ -141,6 +140,8 @@ polyline {
   white-space: nowrap; /* 텍스트 줄바꿈 방지 */
   overflow: hidden; /* 넘침 처리 */
   text-overflow: ellipsis; /* 생략 부호(...) 표시 */
+  z-index: 10;
+  cursor: pointer;
 }
 #polaroidContainer .polaroid p {
   color: black; /* 일기 날짜 색상 */
@@ -151,10 +152,65 @@ polyline {
   height: 75%; /* 내용 영역의 높이 설정 */
   overflow: hidden; /* 넘침 처리 */
   transition: opacity 1s ease-in; /* 투명도 변화 효과 설정 */
-}
+} 
 #polaroidContainer .polaroid .content.hide-content {
   opacity: 0; /* 일기 내용 클릭 시 검은색으로 변환 */
 }
 .diary-list .polaroid {
   transition: all 0.3s ease;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 확대된 보기 스타일 설정 */
+#diaryDetail {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+  transition: opacity 1s ease;
+  opacity: 0; /* 초기 투명도 설정 */
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#diaryDetail .content {
+  margin-bottom: 10px;
+}
+
+#diaryDetail h2 {
+  color: #7ac143;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+#diaryDetail p {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#diaryDetail button {
+  background-color: #7ac143;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 }

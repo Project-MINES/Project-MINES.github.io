@@ -32,7 +32,6 @@ html {
       /*background: rgb(25, 132, 213);*/
       background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
       transition: background-color 1.2s ease;
-
   }
 
   body::-webkit-scrollbar
@@ -141,25 +140,115 @@ html {
     -ms-overflow-style: none;
     display: block;
     font-size: 15vw;
-    /*color: rgb(22, 119, 191);*/
     color: #f1ebe5;
-    /*color: #9f9b97;*/
     text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
-    line-height: 30%;
+    line-height: 12%;
+    animation: moveup 30s linear infinite;
 }
 
-#emotionDiv 
+#emotionDiv
 {
     position: relative;
-    left: 3%;
+    left: 30%;
+    text-align: center;
+    width: 40%;
     opacity: 1;
     transition: opacity 0.5s ease;
+    
+}
+#emotionDiv:hover
+{
+  animation-play-state: paused;
+}
+.joy {
+  --duration: 1200ms;
+  --text-shadow-color: hsl(0 0% 100%);
+  
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  text-shadow: 
+    0.006em -0.006em 0 var(--text-shadow-color),
+    0.012em -0.012em 0 var(--text-shadow-color),
+    0.018em -0.018em 0 var(--text-shadow-color),
+    0.024em -0.024em 0 var(--text-shadow-color),
+    0.030em -0.030em 0 var(--text-shadow-color),
+    0.006em  0       0 currentcolor,
+    0.012em -0.006em 0 currentcolor,
+    0.018em -0.012em 0 currentcolor,
+    0.024em -0.018em 0 currentcolor,
+    0.030em -0.024em 0 currentcolor,
+    0.036em -0.030em 0 currentcolor,
+    0.036em -0.036em 0 currentcolor;
+  perspective: 3em;
+  transform-origin: bottom center;
+  transform-style: preserve-3d;
+  animation: movement var(--duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
+.joy::after {
+  --transform: scaleY(-1) translateY(-30%) rotateX(-35deg) scaleY(1.2) translateY(calc(-30% + 2px));
+  --transform-alt: scaleY(-1) translateY(-30%) rotateX(-55deg) scaleY(1.4) translateY(calc(-30% + 2px));
+  
+  content: '기쁨 JOY' / '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-shadow: initial;
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      hsla(0 0% 0% / 0) 0%,
+      hsla(0 0% 0% / 0.006) 13.7%,
+      hsla(0 0% 0% / 0.022) 25.4%,
+      hsla(0 0% 0% / 0.049) 35.3%,
+      hsla(0 0% 0% / 0.086) 43.6%,
+      hsla(0 0% 0% / 0.133) 50.6%,
+      hsla(0 0% 0% / 0.188) 56.5%,
+      hsla(0 0% 0% / 0.251) 61.6%,
+      hsla(0 0% 0% / 0.323) 66%,
+      hsla(0 0% 0% / 0.402) 70.1%,
+      hsla(0 0% 0% / 0.487) 74.1%,
+      hsla(0 0% 0% / 0.579) 78.1%,
+      hsla(0 0% 0% / 0.677) 82.5%,
+      hsla(0 0% 0% / 0.780) 87.4%,
+      hsla(0 0% 0% / 0.888) 93.2%,
+      hsla(0 0% 0% / 1) 100%
+    );
+  opacity: 0.8;
+  transform: var(--transform);
+  animation: shadow var(--duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes movement {
+  20% { transform: scaleY(1.4) skew(10deg)  }
+  50% { transform: scaleY(1)   skew(0)      }
+  70% { transform: scaleY(1.4) skew(-10deg) }
+}
+
+@keyframes shadow {
+  20% { transform: var(--transform-alt) }
+  50% { transform: var(--transform)     }
+  70% { transform: var(--transform-alt) }
+}
+
+@keyframes rotate {
+  to { transform: rotate(1turn) }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+}
 #emotion0:hover
 {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
+  
 }
 @keyframes glitchy {
     0%   {transform: translate(-5px, 5px);}
@@ -240,8 +329,23 @@ html {
 .particletext {
     font-size:48px;
     position: relative;
+
  }
  
+ .particletext.confetti > .particle {
+  opacity:0;
+  position: absolute;
+  animation: confetti 3s ease-in infinite;
+}
+.particletext.confetti > .particle.c1
+{
+  background-color:rgba(76,175,80,0.5);
+}
+.particletext.confetti > .particle.c2
+{
+background-color:rgba(156,39,176,0.5);
+}
+
  .particletext.hearts > .particle {
     opacity:0;
     position: absolute;
@@ -291,7 +395,9 @@ html {
     border-top-right-radius:0px;
     background-color:rgba(251,140,0,0.5);
  }
- 
+
+  
+
  @keyframes hearts {
     0% {
        opacity: 0;
@@ -325,7 +431,28 @@ html {
        transform: rotate(-70deg) translateY(-40%);
        opacity:1;
     }
+    
  }
+
+ @keyframes confetti {
+  0% {
+     opacity:0;
+     transform:translateY(0%) rotate(0deg);
+  }
+  10% {
+     opacity:1;
+  }
+  35% {
+     transform:translateY(-800%) rotate(270deg);
+  }
+  80% {
+     opacity:1;
+  }
+  100% {
+     opacity:0;
+     transform:translateY(2000%) rotate(1440deg);
+  }
+}
  #emotion2:hover
 {
   color: white;
@@ -392,6 +519,7 @@ html {
   color: white;
   text-shadow: 0 0 10px rgb(134, 116, 86);
 }
+
 #emotion12
 {
   transition:text-shadow 1s, color 1s;
@@ -656,7 +784,7 @@ html {
 {
   position: absolute;
   left: 0%;
-  bottom: -12%;
+  bottom: -35%;
 }
 #emotion19:hover
 {
@@ -746,8 +874,6 @@ polyline {
 }
   .container > * {
     position: absolute;
-    top: 21%;
-    right: 2%;
     rotate: 45deg;
   }
 
@@ -871,3 +997,73 @@ polyline {
       transform: translateY(10px); } }
   
   /*# sourceMappingURL=style.css.map */
+
+  .button_container {
+    position: fixed;
+    right: 5%;
+    top: 90%;
+    transform: scale(0.8);
+    z-index: 999;
+  }
+  
+  .description, .link {
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+  }
+  
+  .description {
+    font-size: 35px;
+  }
+  
+  .btn {
+    border: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
+    ;
+    padding: 17px 60px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+  }
+  
+  .btn span {
+    position: relative; 
+    z-index: 1;
+  }
+  
+  .btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    background: #513802;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  }
+  
+  .btn:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  }
+  
+  .link {
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  
+  .link a {
+    color: #000;
+    font-size: 25px; 
+  }
