@@ -2,7 +2,7 @@
 * 일기가 없을 때 → EmotionCntList 초기
 * 일기가 있을 때 → 기존에 존재하는 EmotionCntList를 수정하기
 */
-let Emotion = ['기쁨', '행복', '설렘', '즐거움', '평온', '슬픔', '아픔', '우울함', '절망', '외로움', '분노', '짜증', '혼란', '불안', '후회', '지루함', '소극적', '죄책감', '두려움', '무기력'];
+let Emotion = ['기쁨', '행복', '설렘', '즐거움', '평온', '슬픔', '아픔', '우울함', '절망', '외로움', '지루함', '부끄러움', '죄책감', '두려움', '놀람', '분노', '짜증', '혼란', '후회', '불안'];
 let EmotionCntList = [];
 if(localStorage.length==0){
     EmotionCntList = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //전체 일기의 감정 별 개수 list
@@ -61,13 +61,23 @@ function DiaryWrite(event){
         /*
         * 전체 감정 개수 리스트에 개수 추가
         */
+        let emotionCountData = localStorage.getItem('EmotionCount');
+        let arr = [];
+    
+        if (emotionCountData) {
+        let parsedData = JSON.parse(emotionCountData);
+            if (parsedData.Cnt && Array.isArray(parsedData.Cnt)) {
+                arr = parsedData.Cnt;
+            }
+        }
+
         EmotionList.forEach(emotionCtn);
         function emotionCtn(BtnString){
             idx = Emotion.indexOf(BtnString);
-            EmotionCntList[idx]++;
+            arr[idx]++;
 
             EmotionCount = {
-                Cnt : EmotionCntList
+                Cnt : arr
             };
             localStorage.setItem('EmotionCount', JSON.stringify(EmotionCount));
         }
@@ -89,6 +99,7 @@ function DiaryWrite(event){
         alert("일기가 저장되었습니다.");
         window.location.href = "DiaryList.html";
         
+        
     } else{
         if(EmotionList.length==0)
             alert("감정을 하나 이상 선택해주세요");
@@ -103,6 +114,17 @@ function DiaryWrite(event){
 * 테스트용 함수
 */
 function test(){
+    let emotionCountData = localStorage.getItem('EmotionCount');
+    let arr = [];
+
+    if (emotionCountData) {
+    let parsedData = JSON.parse(emotionCountData);
+        if (parsedData.Cnt && Array.isArray(parsedData.Cnt)) {
+            arr = parsedData.Cnt;
+        }
+    }
+
+    console.log(arr);
 }
 
 /*
