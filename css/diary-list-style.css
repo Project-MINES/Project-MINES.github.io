@@ -9,30 +9,22 @@ body {
   margin-top: 10px;
   font-family: 'NanumBarunGothic';
 }
-
 #nav {
   left: 50%;
   display: flex;
   justify-content: space-between;
   margin: 10px;
 }
-#nav .left a{
-  margin-left: 30%;
-}
-#nav .right a{
-  margin-right: 30%;
-}
-
-#gotoindex
-{
+#nav .left a{  margin-left: 30%;}
+#nav .right a{  margin-right: 30%;}
+#gotoindex{
   position: fixed;
   left: 0%;
   height: 100%;
   width: 7%;
   z-index: 2;
 }
-#gotowrite
-{
+#gotowrite{
   position: fixed;
   right: 0%;
   height: 100%;
@@ -40,19 +32,12 @@ body {
   z-index: 2;
 }
 
-#gotoindex:hover,#gotowrite:hover
-{
+#gotoindex:hover,#gotowrite:hover{
   background-color: gray;
   opacity: 0.1;
 }
-
-#gotoindex .left {
-  left: 42%;
-}
-
-#gotowrite .right {
-  left: 58%;
-}
+#gotoindex .left {  left: 42%;}
+#gotowrite .right {  left: 58%;}
 
 #gotoindex button, #gotowrite button {
   -webkit-appearance: none;
@@ -77,24 +62,18 @@ svg {
   opacity: 1;
 }
 .left:hover polyline,
-.left:focus polyline {
-  stroke-width: 3;
-}
+.left:focus polyline {  stroke-width: 3;}
 .left:active polyline {
   stroke-width: 6;
   transition: all 100ms ease-in-out;
 }
 .right:hover polyline,
-.right:focus polyline {
-  stroke-width: 3;
-}
+.right:focus polyline {  stroke-width: 3;}
 .right:active polyline {
   stroke-width: 6;
   transition: all 100ms ease-in-out;
 }
-polyline {
-  transition: all 250ms ease-in-out;
-} 
+polyline {  transition: all 250ms ease-in-out;} 
 
 #polaroidContainer {
   display: flex;
@@ -159,7 +138,26 @@ polyline {
 .diary-list .polaroid {
   transition: all 0.3s ease;
 }
-
+#all, #joy, #sad, #timid, #angry{
+  width: 100px;
+  height: 30px;
+  margin-left : 10px;
+  margin-top:10px;
+  background: #ebebeb;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border : 0px;
+  border-radius: 50px;
+}
+#all{  background: #ebebeb;  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);}
+#joy{  background: #fffadb;  box-shadow: inset 0px 4px 4px rgba(142, 131, 32, 0.25);}
+#sad{  background: #e4eaff;  box-shadow: inset 0px 4px 4px rgba(34, 39, 123, 0.25);}
+#timid{  background: #f6e9ff;  box-shadow: inset 0px 4px 4px rgba(163, 45, 202, 0.25);}
+#angry{  background: #ffe4e4;  box-shadow: inset 0px 4px 4px rgba(202, 45, 45, 0.25);}
+#all:hover{  background-color: rgb(255, 255, 255);}
+#joy:hover{  background-color: rgb(255, 242, 120);}
+#sad:hover{  background-color: rgb(157, 180, 255);}
+#timid:hover{  background-color: rgb(208, 137, 239);} 
+#angry:hover{  background-color: rgb(255, 128, 109);}
 
 @keyframes fadeIn {
   from {
