@@ -1,17 +1,22 @@
 // 버튼 클릭 이벤트 처리
 document.getElementById("all").addEventListener("click", function() {
+  changeEmotion(this);
   showAllDiaries();
 });
 document.getElementById("joy").addEventListener("click", function() {
+  changeEmotion(this);
   filterDiaryByEmotion(["행복", "기쁨", "설렘", "즐거움", "평온"]);
 });
 document.getElementById("sad").addEventListener("click", function() {
+  changeEmotion(this);
   filterDiaryByEmotion(["슬픔", "아픔", "우울함", "절망", "외로움"]);
 });
 document.getElementById("timid").addEventListener("click", function() {
+  changeEmotion(this);
   filterDiaryByEmotion(["지루함", "부끄러움", "죄책감", "두려움", "놀람"]);
 });
 document.getElementById("angry").addEventListener("click", function() {
+  changeEmotion(this);
   filterDiaryByEmotion(["분노", "짜증", "혼란", "후회", "불안"]);
 });
 
@@ -132,7 +137,6 @@ function showDiaryDetail(diaryData) {
   // 기존 폴라로이드 숨기기
   document.getElementById("polaroidContainer").style.display = "none";
   
-
   // 확대 보기 컨테이너 생성
   const detailContainer = document.createElement("div");
   detailContainer.id = "diaryDetail";
@@ -155,8 +159,6 @@ function showDiaryDetail(diaryData) {
   const date = document.createElement("p");
   date.textContent = diaryData.Date;
   detailContainer.appendChild(date);
-
-  
   
   // 닫기 버튼 생성
   const closeButton = document.createElement("button");
@@ -185,4 +187,34 @@ titleElements.forEach((titleElement) => {
 // 제목으로부터 일기 데이터 가져오기
 function getDiaryDataFromTitle(title) {
   return currentDiaryList.find((diaryData) => diaryData.Title === title);
+}
+
+function changeEmotion(emotionId) {
+  let currentColor = emotionId.style.backgroundColor;
+
+  if (emotionId.id === "joy") {
+    if (currentColor === "rgb(255, 242, 120)") {
+      emotionId.style.backgroundColor = "#fffadb";
+    } else {
+      emotionId.style.backgroundColor = "rgb(255, 242, 120)";
+    }
+  } else if (emotionId.id === "sad") {
+    if (currentColor === "rgb(157, 180, 255)") {
+      emotionId.style.backgroundColor = "#e4eaff";
+    } else {
+      emotionId.style.backgroundColor = "rgb(157, 180, 255)";
+    }
+  } else if (emotionId.id === "timid") {
+    if (currentColor === "rgb(208, 137, 239)") {
+      emotionId.style.backgroundColor = "#f6e9ff";
+    } else {
+      emotionId.style.backgroundColor = "rgb(208, 137, 239)";
+    }
+  } else if (emotionId.id === "angry") {
+    if (currentColor === "rgb(255, 128, 109)") {
+      emotionId.style.backgroundColor = "#ffe4e4";
+    } else {
+      emotionId.style.backgroundColor = "rgb(255, 128, 109)";
+    }
+  }
 }
