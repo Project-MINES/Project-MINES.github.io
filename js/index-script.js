@@ -44,7 +44,7 @@ var makeItRain = function() {
   }
   
   var arr = new Array();
-  arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  arr = [30, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
                                                 
   var arr2 = new Array();
   var arr3 = new Array();
@@ -110,8 +110,8 @@ function printText()
 function changeSize() 
   {
     for (var i = 0; i < arr2.length; i++) {
-        var size = 3 * arr[i] + 100;
-        document.getElementById("emotion" + i).style.fontSize = size + "px";
+        var size = 3.125 + 0.05 * arr[i] + "rem";
+        document.getElementById("emotion" + i).style.fontSize = size;
     }
   }
 printText();
@@ -172,12 +172,6 @@ function removemain(element){
       emotionDiv.style.width = "40%";
       emotionDiv.style.lineHeight = "12%";
       emotionDiv.style.textAlign = "center";
-      
-      var emotion6 = document.getElementById('emotion6');
-      var band = document.querySelector('.container > *');
-
-      band.style.left = emotion6.style.left;
-      band.style.top = emotion6.style.top;
     }    
 
   });
