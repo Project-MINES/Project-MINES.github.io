@@ -3,28 +3,38 @@
   padding: 0;
   line-height: 1.3;
 }
+
 body {
   opacity: 0;
   background-color: #e5d6c1c7;
   margin-top: 10px;
   font-family: 'NanumBarunGothic';
 }
+
 #nav {
   left: 50%;
   display: flex;
   justify-content: space-between;
   margin: 10px;
 }
-#nav .left a{  margin-left: 30%;}
-#nav .right a{  margin-right: 30%;}
-#gotoindex{
+
+#nav .left a {
+  margin-left: 30%;
+}
+
+#nav .right a {
+  margin-right: 30%;
+}
+
+#gotoindex {
   position: fixed;
   left: 0%;
   height: 100%;
   width: 7%;
   z-index: 2;
 }
-#gotowrite{
+
+#gotowrite {
   position: fixed;
   right: 0%;
   height: 100%;
@@ -32,18 +42,26 @@ body {
   z-index: 2;
 }
 
-#gotoindex:hover,#gotowrite:hover{
+#gotoindex:hover,
+#gotowrite:hover {
   background-color: gray;
   opacity: 0.1;
 }
-#gotoindex .left {  left: 42%;}
-#gotowrite .right {  left: 58%;}
 
-#gotoindex button, #gotowrite button {
+#gotoindex .left {
+  left: 42%;
+}
+
+#gotowrite .right {
+  left: 58%;
+}
+
+#gotoindex button,
+#gotowrite button {
   -webkit-appearance: none;
   background: transparent;
   border: 0;
-  outline:0;
+  outline: 0;
 }
 
 .arrow {
@@ -61,25 +79,39 @@ svg {
   padding: 5px;
   opacity: 1;
 }
+
 .left:hover polyline,
-.left:focus polyline {  stroke-width: 3;}
+.left:focus polyline {
+  stroke-width: 3;
+}
+
 .left:active polyline {
   stroke-width: 6;
   transition: all 100ms ease-in-out;
 }
+
 .right:hover polyline,
-.right:focus polyline {  stroke-width: 3;}
+.right:focus polyline {
+  stroke-width: 3;
+}
+
 .right:active polyline {
   stroke-width: 6;
   transition: all 100ms ease-in-out;
 }
-polyline {  transition: all 250ms ease-in-out;} 
+
+polyline {
+  transition: all 250ms ease-in-out;
+}
 
 #polaroidContainer {
   display: flex;
-  flex-wrap: wrap; /* 줄 바꿈 설정 */
-  justify-content: center; /* 가운데 정렬 */
-  margin: 0 auto; /* 가운데 정렬을 위한 왼쪽과 오른쪽 여백 설정 */
+  flex-wrap: wrap;
+  /* 줄 바꿈 설정 */
+  justify-content: center;
+  /* 가운데 정렬 */
+  margin: 0 auto;
+  /* 가운데 정렬을 위한 왼쪽과 오른쪽 여백 설정 */
 }
 
 #polaroidContainer .polaroid {
@@ -91,8 +123,10 @@ polyline {  transition: all 250ms ease-in-out;}
   position: relative;
   padding: 10px 10px;
   box-sizing: border-box;
-  margin-right: 20px; /* 오른쪽 마진 설정 */
-  margin-bottom: 20px; /* 아래쪽 마진 설정 */
+  margin-right: 20px;
+  /* 오른쪽 마진 설정 */
+  margin-bottom: 20px;
+  /* 아래쪽 마진 설정 */
 }
 
 #polaroidContainer .polaroid:after {
@@ -113,56 +147,77 @@ polyline {  transition: all 250ms ease-in-out;}
 }
 
 #polaroidContainer .polaroid h5 {
-  color: #7ac143; /* 일기 제목 색상 */
+  color: #7ac143;
+  /* 일기 제목 색상 */
   font-size: 24px;
   margin-top: 4px;
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-  overflow: hidden; /* 넘침 처리 */
-  text-overflow: ellipsis; /* 생략 부호(...) 표시 */
+  white-space: nowrap;
+  /* 텍스트 줄바꿈 방지 */
+  overflow: hidden;
+  /* 넘침 처리 */
+  text-overflow: ellipsis;
+  /* 생략 부호(...) 표시 */
   z-index: 10;
   cursor: pointer;
 }
+
 #polaroidContainer .polaroid p {
-  color: black; /* 일기 날짜 색상 */
+  color: black;
+  /* 일기 날짜 색상 */
   font-size: 14px;
 }
+
 #polaroidContainer .polaroid .content {
-  color: black; /* 일기 내용 색상 */
-  height: 75%; /* 내용 영역의 높이 설정 */
-  overflow: hidden; /* 넘침 처리 */
-  transition: opacity 1s ease-in; /* 투명도 변화 효과 설정 */
-} 
-#polaroidContainer .polaroid .content.hide-content {
-  opacity: 0; /* 일기 내용 클릭 시 검은색으로 변환 */
+  color: black;
+  /* 일기 내용 색상 */
+  height: 75%;
+  /* 내용 영역의 높이 설정 */
+  overflow: hidden;
+  /* 넘침 처리 */
+  transition: opacity 1s ease-in;
+  /* 투명도 변화 효과 설정 */
 }
+
+#polaroidContainer .polaroid .content.hide-content {
+  opacity: 0;
+  /* 일기 내용 클릭 시 검은색으로 변환 */
+}
+
 .diary-list .polaroid {
   transition: all 0.3s ease;
 }
-#all, #joy, #sad, #timid, #angry{
+
+#all,
+#joy,
+#sad,
+#timid,
+#angry {
   width: 100px;
   height: 30px;
-  margin-left : 10px;
-  margin-top:10px;
+  margin-left: 10px;
+  margin-top: 10px;
   background: #ebebeb;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border : 0px;
+  border: 0px;
   border-radius: 50px;
 }
-#all{  background: #ebebeb;  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);}
-#joy{  background: #fffadb;  box-shadow: inset 0px 4px 4px rgba(142, 131, 32, 0.25);}
-#sad{  background: #e4eaff;  box-shadow: inset 0px 4px 4px rgba(34, 39, 123, 0.25);}
-#timid{  background: #f6e9ff;  box-shadow: inset 0px 4px 4px rgba(163, 45, 202, 0.25);}
-#angry{  background: #ffe4e4;  box-shadow: inset 0px 4px 4px rgba(202, 45, 45, 0.25);}
-#all:hover{  background-color: rgb(255, 255, 255);}
-#joy:hover{  background-color: rgb(255, 242, 120);}
-#sad:hover{  background-color: rgb(157, 180, 255);}
-#timid:hover{  background-color: rgb(208, 137, 239);} 
-#angry:hover{  background-color: rgb(255, 128, 109);}
+
+#all {  background: #ebebeb;  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);}
+#joy {  background: #fffadb;  box-shadow: inset 0px 4px 4px rgba(142, 131, 32, 0.25);}
+#sad {  background: #e4eaff;  box-shadow: inset 0px 4px 4px rgba(34, 39, 123, 0.25);}
+#timid {  background: #f6e9ff;  box-shadow: inset 0px 4px 4px rgba(163, 45, 202, 0.25);}
+#angry {  background: #ffe4e4;  box-shadow: inset 0px 4px 4px rgba(202, 45, 45, 0.25);}
+#all:hover {  background-color: rgb(255, 255, 255);}
+#joy:hover {  background-color: rgb(255, 242, 120);}
+#sad:hover {  background-color: rgb(157, 180, 255);}
+#timid:hover {  background-color: rgb(208, 137, 239);}
+#angry:hover {  background-color: rgb(255, 128, 109);}
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -181,7 +236,8 @@ polyline {  transition: all 250ms ease-in-out;}
   padding: 20px;
   overflow-y: auto;
   transition: opacity 1s ease;
-  opacity: 0; /* 초기 투명도 설정 */
+  opacity: 0;
+  /* 초기 투명도 설정 */
 }
 
 .fade-in {
@@ -206,6 +262,15 @@ polyline {  transition: all 250ms ease-in-out;}
 
 #diaryDetail button {
   background-color: #7ac143;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#diaryDetail .delete {
+  background-color: red;
   color: white;
   padding: 10px 20px;
   border: none;
