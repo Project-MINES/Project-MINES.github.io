@@ -109,8 +109,15 @@ function changeSize()
   {
     let array1 = localStorage.getItem('EmotionCount');
     let array2 = JSON.parse(array1);
-
     arr = array2.Cnt;
+
+    if (Array.isArray(array2.Cnt)) {
+      arr = array2.Cnt;
+    } else {
+      arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    }
+    
+
     for (let i = 0; i < arr2.length; i++) {
       let size = 3.125 + 0.1 * arr[i] + "rem";
       document.getElementById("emotion" + i).style.fontSize = size;
