@@ -2,7 +2,7 @@
 $(document).ready(function() {
   $('#goList').click(function() {
     $('#emotionDiv').css('opacity', 0);
-    var url = 'DiarayList.html';
+    let url = 'DiarayList.html';
     $.ajax({
       url: url,
       dataType: 'html',
@@ -18,23 +18,23 @@ $(document).ready(function() {
 
 
 // 비 내리는 함수
-var makeItRain = function() {
+let makeItRain = function() {
     //clear out everything
     $('.rain').empty();
 
-    var increment = 0;
-    var drops = "";
-    var backDrops = "";
+    let increment = 0;
+    let drops = "";
+    let backDrops = "";
 
     while (increment < 100) {
-      //couple random numbers to use for various randomizations
+      //couple random numbers to use for letious randomizations
       //random number between 98 and 1
-      var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+      let randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
       //random number between 5 and 2
-      var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
+      let randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
       //increment
       increment += randoFiver;
-      //add in a new raindrop with various randomizations to certain CSS properties
+      //add in a new raindrop with letious randomizations to certain CSS properties
       drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
       backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
     }
@@ -43,23 +43,21 @@ var makeItRain = function() {
     $('.rain.back-row').append(backDrops);
   }
   
-  var arr = new Array();
-  arr = [30, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-                                                
-  var arr2 = new Array();
-  var arr3 = new Array();
+  let arr = new Array();                               
+  let arr2 = new Array();
+  let arr3 = new Array();
   arr2 = ["기쁨", "행복", "설렘", "즐거움", "평온", "슬픔", "아픔", "우울함", "절망", "외로움", "지루함", "부끄러움", "죄책감", "두려움", "놀람", "분노", "짜증", "혼란", "후회", "불안"];
   arr3 = ["JOY", "HAPPINESS", "EXCITEMENT", "PLEASURE", "CALM", "SADNESS", "PAIN", "DEPRESSION", "DESPAIR", "LONELINESS", "BOREDOM", "SHAME", "GUILT", "FEAR", "SURPRISE","ANGER", "ANNOYANCE", "CONFUSION",  "REGRET","ANXIETY"];
-  var buttonbol = true;
+  let buttonbol = true;
 // arr2 내용 html 화면에 출력
 function printText()
 {
-  var emotionDiv = document.createElement("div");
+  let emotionDiv = document.createElement("div");
   emotionDiv.id = "emotionDiv";
   emotionDiv.className = "emotion";
-  for (var i = 0; i < arr2.length; i++) 
+  for (let i = 0; i < arr2.length; i++) 
   {
-      var span = document.createElement("span");
+    let span = document.createElement("span");
       span.id = "emotion" + i;
       
       if(i == 2)
@@ -84,7 +82,7 @@ function printText()
         span.innerHTML = arr2[i] + "&nbsp;" + arr3[i] + "&nbsp;";
         if(buttonbol == true)
         {
-          var span2 = document.createElement("span");
+          let span2 = document.createElement("span");
           span2.id = "emotionDiv";
           span2.className = "emotion";
           span2.innerHTML = "<br>";
@@ -94,7 +92,7 @@ function printText()
         {
           if(i == 3 || i == 6 || i == 9 || i == 11 || i == 14 || i == 17 )
           {
-            var span2 = document.createElement("span");
+            let span2 = document.createElement("span");
             span2.id = "emotionDiv";
             span2.className = "emotion";
             span2.innerHTML = "<br>";
@@ -109,16 +107,21 @@ function printText()
 }
 function changeSize() 
   {
-    for (var i = 0; i < arr2.length; i++) {
-        var size = 3.125 + 0.05 * arr[i] + "rem";
-        document.getElementById("emotion" + i).style.fontSize = size;
+    let array1 = localStorage.getItem('EmotionCount');
+    let array2 = JSON.parse(array1);
+
+    arr = array2.Cnt;
+    for (let i = 0; i < arr2.length; i++) {
+      let size = 3.125 + 0.1 * arr[i] + "rem";
+      document.getElementById("emotion" + i).style.fontSize = size;
     }
   }
+
 printText();
 changeSize();
 setTextanimation();
 
-var changebutton = document.querySelector('.button_container');
+let changebutton = document.querySelector('.button_container');
 
   function getmain(element) {
     element.classList.add('emotion');
@@ -128,7 +131,7 @@ function removemain(element){
   }
 
   
-  var emotionDiv = document.getElementById('emotionDiv');
+  let emotionDiv = document.getElementById('emotionDiv');
   changebutton.addEventListener('click', () => {
     if(buttonbol == true)
     {
@@ -150,7 +153,7 @@ function removemain(element){
       emotionDiv.style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
       emotionDiv.style.lineHeight = "1000%";
 
-      var band = document.querySelector('.container > *');
+      let band = document.querySelector('.container > *');
 
       band.style.left = "2%";
       band.style.top = "33%";
@@ -182,9 +185,9 @@ function removemain(element){
 
   function hearts() {
     $.each($(".particletext.hearts"), function(){
-       var heartcount = ($(this).width()/400)*5;
-       for(var i = 0; i <= heartcount; i++) {
-          var size = ($.rnd(130,120)/10);
+       let heartcount = ($(this).width()/400)*5;
+       for(let i = 0; i <= heartcount; i++) {
+          let size = ($.rnd(130,120)/10);
           $(this).append('<span class="particle" style="top:' + $.rnd(20,80) + '%; left:' + $.rnd(0,95) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,30)/10) + 's;"></span>');
        }
     });
@@ -192,8 +195,8 @@ function removemain(element){
 
  function confetti() {
   $.each($(".particletext.confetti"), function(){
-     var confetticount = ($(this).width()/100)*5;
-     for(var i = 0; i <= confetticount; i++) {
+     let confetticount = ($(this).width()/100)*5;
+     for(let i = 0; i <= confetticount; i++) {
         $(this).append('<span class="particle c' + $.rnd(1,2) + '" style="top:' + $.rnd(10,50) + '%; left:' + $.rnd(0,100) + '%;width:' + $.rnd(6,8) + 'px; height:' + $.rnd(3,4) + 'px;animation-delay: ' + ($.rnd(0,30)/10) + 's;"></span>');
      }
   });
@@ -201,9 +204,9 @@ function removemain(element){
  
  function fire() {
     $.each($(".particletext.fire"), function(){
-       var firecount = ($(this).width()/1000)*10;
-       for(var i = 0; i <= firecount; i++) {
-          var size = $.rnd(60,12);
+       let firecount = ($(this).width()/1000)*10;
+       for(let i = 0; i <= firecount; i++) {
+          let size = $.rnd(60,12);
           $(this).append('<span class="particle" style="top:' + $.rnd(40,70) + '%; left:' + $.rnd(-10,100) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,20)/10) + 's;"></span>');
        }
     });
@@ -217,13 +220,13 @@ function removemain(element){
 
  function setTextanimation()
  {
-  var timeoutId;
-  var timeoutId2;
-  var timeoutId3;
-  var timeoutId4;
+  let timeoutId;
+  let timeoutId2;
+  let timeoutId3;
+  let timeoutId4;
    const body = document.body;
    const targetText = new Array();
-   for(var i = 0; i < 20; i++)
+   for(let i = 0; i < 20; i++)
    {
      targetText[i] = document.getElementById("emotion" + i);
    }
@@ -246,7 +249,7 @@ function removemain(element){
      getjoy(targetText[0]);
  
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 0)
          {
@@ -259,7 +262,7 @@ function removemain(element){
  
    targetText[0].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
    
          targetText[i].style.color = "#f1ebe5";
@@ -274,7 +277,7 @@ function removemain(element){
      body.style.background = '#fbceb1';
      targetText[1].style.color = '#f6aca2';
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 1)
          {
@@ -289,7 +292,7 @@ function removemain(element){
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
      document.querySelector(".emotion").style.color = "#f1ebe5";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -303,7 +306,7 @@ function removemain(element){
      targetText[2].style.textShadow = "0 0 1px black";
      targetText[2].style.transition = "color 0.5s ease";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 2)
          {
@@ -318,7 +321,7 @@ function removemain(element){
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
      document.querySelector(".emotion").style.color = "#f1ebe5";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -338,7 +341,7 @@ function removemain(element){
      targetText[3].style.textShadow = "0 0 1px black";
      targetText[3].style.transition = "color 0.5s ease";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 3)
          {
@@ -354,7 +357,7 @@ function removemain(element){
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
      document.querySelector(".emotion").style.color = "#f1ebe5";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -374,7 +377,7 @@ function removemain(element){
      targetText[4].style.textShadow = "0 1px 10px black";
      targetText[4].style.transition = "all 1.0s ease";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 4)
          {
@@ -388,7 +391,7 @@ function removemain(element){
    targetText[4].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
      document.querySelector(".emotion").style.color = "#f1ebe5"; 
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
              targetText[i].style.color = "#f1ebe5";
              targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -403,7 +406,7 @@ function removemain(element){
      targetText[5].style.color = "white";
      targetText[5].style.textShadow = "0 0 1px black";
      targetText[5].style.transition = "color 0.5s ease";
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 5)
          {
@@ -417,7 +420,7 @@ function removemain(element){
  
    targetText[5].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          
          targetText[i].style.color = "#f1ebe5";
@@ -439,7 +442,7 @@ function removemain(element){
      targetText[6].style.color = "white";
      targetText[6].style.textShadow = "0 0 1px black";
      targetText[6].style.transition = "opacity 1s color 1s ease";
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 6)
          {
@@ -453,7 +456,7 @@ function removemain(element){
    targetText[6].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
      band.style.opacity = 0;
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          
          targetText[i].style.color = "#f1ebe5";
@@ -472,7 +475,7 @@ function removemain(element){
      targetText[7].style.transition = "opacity 1s color 1s ease";
  
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 7)
          {
@@ -485,7 +488,7 @@ function removemain(element){
  
    targetText[7].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
    
          targetText[i].style.color = "#f1ebe5";
@@ -502,7 +505,7 @@ function removemain(element){
      targetText[8].style.transition = "opacity 1s color 1s ease";
  
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 8)
          {
@@ -515,7 +518,7 @@ function removemain(element){
  
    targetText[8].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
    
          targetText[i].style.color = "#f1ebe5";
@@ -532,7 +535,7 @@ function removemain(element){
      targetText[9].style.transition = "opacity 1s color 1s ease";
  
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 9)
          {
@@ -545,7 +548,7 @@ function removemain(element){
  
    targetText[9].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
    
        targetText[i].style.color = "#f1ebe5";
@@ -560,7 +563,7 @@ function removemain(element){
      targetText[10].style.removeProperty("text-shadow");
      targetText[10].style.transition = "text-Shadow 1.0s, color 3.0s ease";
      
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
        if(i != 10)
        {
@@ -573,7 +576,7 @@ function removemain(element){
  
  targetText[11].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -589,7 +592,7 @@ function removemain(element){
      targetText[11].style.removeProperty("text-shadow");
      targetText[11].style.transition = "text-Shadow 1.0s, color 6.0s ease";
      
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
        if(i != 11)
        {
@@ -602,7 +605,7 @@ function removemain(element){
  
  targetText[11].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -628,7 +631,7 @@ function removemain(element){
      targetText[12].style.transition = "text-Shadow 1.0s, color 3.0s ease";
      getguilty(targetText[12]);
      
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
        if(i != 12)
        {
@@ -641,7 +644,7 @@ function removemain(element){
  
  targetText[12].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
        if( i != 12)
        {
@@ -661,7 +664,7 @@ function removemain(element){
      targetText[13].style.removeProperty("text-shadow");
      targetText[13].style.transition = "text-Shadow 1.0s, color 3.0s ease";
      
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
        if(i != 13)
        {
@@ -674,7 +677,7 @@ function removemain(element){
  
  targetText[13].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -690,7 +693,7 @@ function removemain(element){
      targetText[14].style.removeProperty("text-shadow");
      targetText[14].style.transition = "text-Shadow 1.0s, color 3.0s ease";
      
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
        if(i != 14)
        {
@@ -703,7 +706,7 @@ function removemain(element){
  
  targetText[14].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          targetText[i].style.color = "#f1ebe5";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -721,7 +724,7 @@ function removemain(element){
      targetText[15].style.transition = "color 6.0s ease";
      targetText[15].style.textShadow = "0 0 0px black"
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 15)
          {
@@ -735,7 +738,7 @@ function removemain(element){
  
    targetText[15].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
              targetText[i].style.color = "#f1ebe5";
              targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
@@ -752,7 +755,7 @@ function removemain(element){
      targetText[16].style.transition = "opacity 1s color 1s ease";
  
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 16)
          {
@@ -765,7 +768,7 @@ function removemain(element){
  
    targetText[16].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
    
        targetText[i].style.color = "#f1ebe5";
@@ -785,7 +788,7 @@ function removemain(element){
      targetText[17].style.color = "white";
      targetText[17].style.textShadow = "0 1px 10px black";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 17)
          {
@@ -798,7 +801,7 @@ function removemain(element){
  
  targetText[17].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
  
        targetText[i].style.color = "#f1ebe5";
@@ -814,7 +817,7 @@ function removemain(element){
      targetText[18].style.color = "white";
      targetText[18].style.textShadow = "0 1px 10px black";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 18)
          {
@@ -827,7 +830,7 @@ function removemain(element){
  
  targetText[18].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
  
        targetText[i].style.color = "#f1ebe5";
@@ -843,7 +846,7 @@ function removemain(element){
      targetText[19].style.color = "white";
      targetText[19].style.textShadow = "0 1px 10px black";
  
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
          if(i != 19)
          {
@@ -856,7 +859,7 @@ function removemain(element){
  
  targetText[19].addEventListener('mouseout', () => {
      body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     for(var i = 0; i < 20; i++)
+     for(let i = 0; i < 20; i++)
      {
  
        targetText[i].style.color = "#f1ebe5";
@@ -869,8 +872,8 @@ function removemain(element){
 
   // 텍스트 암호화
  function WordShuffler(holder,opt){
-    var that = this;
-    var time = 0;
+    let that = this;
+    let time = 0;
     this.now;
     this.then = Date.now();
     
@@ -883,7 +886,7 @@ function removemain(element){
     this.currentWordLength = 0;
   
   
-    var options = {
+    let options = {
       fps : 20,
       timeOffset : 1,
       textColor : '#000',
@@ -945,7 +948,7 @@ function removemain(element){
     }
   
     this.getRandomColor = function () {
-      var randNum = Math.floor( Math.random() * this.colors.length );
+      let randNum = Math.floor( Math.random() * this.colors.length );
       return this.colors[randNum];
     }
   
@@ -970,10 +973,10 @@ function removemain(element){
       if(characterToReplace == " "){
         return ' ';
       }
-      var randNum = Math.floor(Math.random() * this.chars.length);
-      var lowChoice =  -.5 + Math.random();
-      var picketCharacter = this.chars[randNum];
-      var choosen = picketCharacter.toLowerCase();
+      let randNum = Math.floor(Math.random() * this.chars.length);
+      let lowChoice =  -.5 + Math.random();
+      let picketCharacter = this.chars[randNum];
+      let choosen = picketCharacter.toLowerCase();
       if(this.mixCapital){
         choosen = lowChoice < 0 ? picketCharacter.toLowerCase() : picketCharacter;
       }
@@ -989,7 +992,7 @@ function removemain(element){
     }
   
     this.generateSingleCharacter = function (color, character) {
-        var span = document.createElement('span');
+        let span = document.createElement('span');
         span.style.color = color;
         
         // Check if character is &nbsp; and replace it with a regular space
@@ -1029,17 +1032,17 @@ function removemain(element){
         if (this.delta > this.interval) {
           this.currentTimeOffset++;
         
-          var word = [];
+          let word = [];
   
           if(this.currentTimeOffset === this.timeOffset && this.currentCharacter !== this.currentWordLength){
             this.currentCharacter++;
             this.currentTimeOffset = 0;
           }
-          for(var k=0;k<this.currentCharacter;k++){
+          for(let k=0;k<this.currentCharacter;k++){
             word.push(this.currentWord[k]);
           }
   
-          for(var i=0;i<this.currentWordLength - this.currentCharacter;i++){
+          for(let i=0;i<this.currentWordLength - this.currentCharacter;i++){
             word.push(this.getRandCharacter(this.currentWord[this.currentCharacter+i]));
           }
   
@@ -1047,7 +1050,7 @@ function removemain(element){
           if(that.useCanvas){
             c.clearRect(0,0,stage.x * stage.dpr , stage.y * stage.dpr);
             c.font = that.fontSize + " sans-serif";
-            var spacing = 0;
+            let spacing = 0;
             word.forEach(function (w,index) {
               if(index > that.currentCharacter){
                 c.fillStyle = that.getRandomColor();
@@ -1064,7 +1067,7 @@ function removemain(element){
             }
             this.holder.innerHTML = '';
             word.forEach(function (w,index) {
-              var color = null
+              let color = null
               if(index > that.currentCharacter){
                 color = that.getRandomColor();
               }else{
