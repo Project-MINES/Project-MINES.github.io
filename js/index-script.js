@@ -144,14 +144,15 @@ function removemain(element){
       emotionDiv = document.getElementById('emotionDiv');
 
       removemain(emotionDiv);
-      emotionDiv.style.textAlign = "left";
+      emotionDiv.style.textAlign = "center";
       emotionDiv.style.left = "0px";
       emotionDiv.style.top = "0px";
       emotionDiv.style.width = "100%";
       emotionDiv.style.height = "100%";
-      emotionDiv.style.color = "#f1ebe5";
+      emotionDiv.style.color = "#ffffff";
       emotionDiv.style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
-      emotionDiv.style.lineHeight = "1000%";
+      emotionDiv.style.lineHeight = "400%";
+      body.style.transition = "all 1s ease";
 
       let band = document.querySelector('.container > *');
 
@@ -175,6 +176,7 @@ function removemain(element){
       emotionDiv.style.width = "40%";
       emotionDiv.style.lineHeight = "12%";
       emotionDiv.style.textAlign = "center";
+      body.style.transition = "all 1s ease";
     }    
 
   });
@@ -244,6 +246,7 @@ function removemain(element){
    
    targetText[0].addEventListener('mouseover', () => {
      body.style.background = '#fbceb1';
+     body.style.transition = "all 1s ease";
      targetText[0].style.color = "white";
      targetText[0].style.textShadow = "0 1px 10px black";
      getjoy(targetText[0]);
@@ -261,11 +264,12 @@ function removemain(element){
    });
  
    targetText[0].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
    
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
  
@@ -275,6 +279,7 @@ function removemain(element){
  // 행복 HAPPINESS
    targetText[1].addEventListener('mouseover', () => {
      body.style.background = '#fbceb1';
+     body.style.transition = "all 1s ease";
      targetText[1].style.color = '#f6aca2';
  
      for(let i = 0; i < 20; i++)
@@ -289,12 +294,13 @@ function removemain(element){
    });
  
    targetText[1].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     document.querySelector(".emotion").style.color = "#f1ebe5";
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
+     document.querySelector(".emotion").style.color = "#ffffff";
  
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
      }
@@ -302,6 +308,7 @@ function removemain(element){
  // 설렘 EXCITEMENT
    targetText[2].addEventListener('mouseover', () => {
      body.style.background = '#fbceb1';
+     body.style.transition = "all 1s ease";
      targetText[2].style.color = 'white';
      targetText[2].style.textShadow = "0 0 1px black";
      targetText[2].style.transition = "color 0.5s ease";
@@ -318,12 +325,13 @@ function removemain(element){
    });
  
    targetText[2].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     document.querySelector(".emotion").style.color = "#f1ebe5";
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
+     document.querySelector(".emotion").style.color = "#ffffff";
  
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
      }
@@ -337,6 +345,7 @@ function removemain(element){
  //즐거움 PLEASURE
   targetText[3].addEventListener('mouseover', () => {
      body.style.background = '#fbceb1';
+     body.style.transition = "all 1s ease";
      targetText[3].style.color = 'white';
      targetText[3].style.textShadow = "0 0 1px black";
      targetText[3].style.transition = "color 0.5s ease";
@@ -354,12 +363,13 @@ function removemain(element){
    
  
    targetText[3].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     document.querySelector(".emotion").style.color = "#f1ebe5";
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
+     document.querySelector(".emotion").style.color = "#ffffff";
  
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
      }
@@ -373,6 +383,7 @@ function removemain(element){
  
    targetText[4].addEventListener('mouseover', () => {
      body.style.background = '#fbceb1';
+     body.style.transition = "all 1s ease";
      targetText[4].style.color = "white";
      targetText[4].style.textShadow = "0 1px 10px black";
      targetText[4].style.transition = "all 1.0s ease";
@@ -389,11 +400,12 @@ function removemain(element){
    });
  
    targetText[4].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
-     document.querySelector(".emotion").style.color = "#f1ebe5"; 
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
+     document.querySelector(".emotion").style.color = "#ffffff"; 
      for(let i = 0; i < 20; i++)
      {
-             targetText[i].style.color = "#f1ebe5";
+             targetText[i].style.color = "#ffffff";
              targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
              targetText[i].style.transition = "color 0.0s ease";
      }
@@ -403,6 +415,7 @@ function removemain(element){
  //슬픔 SADNESS
  targetText[5].addEventListener('mouseover', () => {
      body.style.background = '#1984D5';
+     body.style.transition = "all 1s ease";
      targetText[5].style.color = "white";
      targetText[5].style.textShadow = "0 0 1px black";
      targetText[5].style.transition = "color 0.5s ease";
@@ -419,11 +432,12 @@ function removemain(element){
    });
  
    targetText[5].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
          
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
  
@@ -436,7 +450,7 @@ function removemain(element){
    targetText[6].addEventListener('mouseover', () => {
      band.style.opacity = 1;
      band.style.zIndex = 3;
-     
+     body.style.transition = "all 1s ease";
      band.style.transition = "opacity 1s ease";
      body.style.background = '#1984D5';
      targetText[6].style.color = "white";
@@ -454,12 +468,13 @@ function removemain(element){
    });
    
    targetText[6].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
      band.style.opacity = 0;
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
          
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
  
@@ -470,6 +485,7 @@ function removemain(element){
    //우울함
    targetText[7].addEventListener('mouseover', () => {
      body.style.background = '#1984D5';
+     body.style.transition = "all 1s ease";
      targetText[7].style.color = "white";
      targetText[7].style.textShadow = "0 0 1px black";
      targetText[7].style.transition = "opacity 1s color 1s ease";
@@ -487,11 +503,12 @@ function removemain(element){
    });
  
    targetText[7].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
    
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
  
@@ -500,6 +517,7 @@ function removemain(element){
  //절망
    targetText[8].addEventListener('mouseover', () => {
      body.style.background = '#1984D5';
+     body.style.transition = "all 1s ease";
      targetText[8].style.color = "white";
      targetText[8].style.textShadow = "0 0 1px black";
      targetText[8].style.transition = "opacity 1s color 1s ease";
@@ -517,11 +535,12 @@ function removemain(element){
    });
  
    targetText[8].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
    
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
  
@@ -530,6 +549,7 @@ function removemain(element){
  //외로움
    targetText[9].addEventListener('mouseover', () => {
      body.style.background = '#1984D5';
+     body.style.transition = "all 1s ease";
      targetText[9].style.color = "white";
      targetText[9].style.textShadow = "0 0 1px black";
      targetText[9].style.transition = "opacity 1s color 1s ease";
@@ -547,11 +567,12 @@ function removemain(element){
    });
  
    targetText[9].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
    
-       targetText[i].style.color = "#f1ebe5";
+       targetText[i].style.color = "#ffffff";
        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
        targetText[i].style.transition = "color 0.0s ease";
      }
@@ -559,6 +580,7 @@ function removemain(element){
  
    targetText[10].addEventListener('mouseover', () => {
      body.style.background = '#f6ddff';
+     body.style.transition = "all 1s ease";
      targetText[10].style.color = "DarkViolet";
      targetText[10].style.removeProperty("text-shadow");
      targetText[10].style.transition = "text-Shadow 1.0s, color 3.0s ease";
@@ -575,19 +597,21 @@ function removemain(element){
    });
  
  targetText[11].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
-       targetText[11].style.color = "#f1ebe5";
+       targetText[11].style.color = "#ffffff";
      }
      
    });
  
    targetText[11].addEventListener('mouseover', () => {
      body.style.background = '#f6ddff';
+     body.style.transition = "all 1s ease";
      targetText[11].style.color = "Red";
      targetText[11].style.removeProperty("text-shadow");
      targetText[11].style.transition = "text-Shadow 1.0s, color 6.0s ease";
@@ -604,10 +628,11 @@ function removemain(element){
    });
  
  targetText[11].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
      }
@@ -626,6 +651,7 @@ function removemain(element){
  // 죄책감 GUILT
    targetText[12].addEventListener('mouseover', () => {
      body.style.background = '#f6ddff';
+     body.style.transition = "all 1s ease";
      targetText[12].style.color = "DarkViolet";
      targetText[12].style.removeProperty("text-shadow");
      targetText[12].style.transition = "text-Shadow 1.0s, color 3.0s ease";
@@ -643,16 +669,17 @@ function removemain(element){
    });
  
  targetText[12].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
        if( i != 12)
        {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
        }
-       targetText[12].style.color = "#f1ebe5";
+       targetText[12].style.color = "#ffffff";
        removeguilty(targetText[12]);
      }
      
@@ -660,6 +687,7 @@ function removemain(element){
  
    targetText[13].addEventListener('mouseover', () => {
      body.style.background = '#f6ddff';
+     body.style.transition = "all 1s ease";
      targetText[13].style.color = "DarkViolet";
      targetText[13].style.removeProperty("text-shadow");
      targetText[13].style.transition = "text-Shadow 1.0s, color 3.0s ease";
@@ -676,13 +704,14 @@ function removemain(element){
    });
  
  targetText[13].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
-       targetText[13].style.color = "#f1ebe5";
+       targetText[13].style.color = "#ffffff";
      }
      
    });
@@ -705,13 +734,14 @@ function removemain(element){
    });
  
  targetText[14].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
-         targetText[i].style.color = "#f1ebe5";
+         targetText[i].style.color = "#ffffff";
          targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
          targetText[i].style.transition = "color 0.0s ease";
-       targetText[14].style.color = "#f1ebe5";
+       targetText[14].style.color = "#ffffff";
      }
      
    });
@@ -719,7 +749,7 @@ function removemain(element){
    //분노 ANGER
    targetText[15].addEventListener('mouseover', () => {
      body.style.background = '#CC2A5D';
- 
+     body.style.transition = "all 1s ease";
      targetText[15].style.color = "black";
      targetText[15].style.transition = "color 6.0s ease";
      targetText[15].style.textShadow = "0 0 0px black"
@@ -737,10 +767,11 @@ function removemain(element){
    });
  
    targetText[15].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
-             targetText[i].style.color = "#f1ebe5";
+             targetText[i].style.color = "#ffffff";
              targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
              targetText[i].style.transition = "color 0.0s ease";
      }
@@ -750,6 +781,7 @@ function removemain(element){
  //짜증
    targetText[16].addEventListener('mouseover', () => {
      body.style.background = '#CC2A5D';
+     body.style.transition = "all 1s ease";
      targetText[16].style.color = "white";
      targetText[16].style.textShadow = "0 0 1px black";
      targetText[16].style.transition = "opacity 1s color 1s ease";
@@ -767,11 +799,12 @@ function removemain(element){
    });
  
    targetText[16].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
    
-       targetText[i].style.color = "#f1ebe5";
+       targetText[i].style.color = "#ffffff";
        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
        targetText[i].style.transition = "color 0.0s ease";
      }
@@ -784,7 +817,7 @@ function removemain(element){
  //혼란 CONFUSION
  targetText[17].addEventListener('mouseover', () => {
      body.style.background = '#CC2A5D';
-     
+     body.style.transition = "all 1s ease";
      targetText[17].style.color = "white";
      targetText[17].style.textShadow = "0 1px 10px black";
  
@@ -800,11 +833,12 @@ function removemain(element){
    });
  
  targetText[17].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
  
-       targetText[i].style.color = "#f1ebe5";
+       targetText[i].style.color = "#ffffff";
        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
        targetText[i].style.transition = "color 0.0s ease";
              
@@ -813,7 +847,7 @@ function removemain(element){
  // 후회 REGRET
    targetText[18].addEventListener('mouseover', () => {
      body.style.background = '#CC2A5D';
-     
+     body.style.transition = "all 1s ease";
      targetText[18].style.color = "white";
      targetText[18].style.textShadow = "0 1px 10px black";
  
@@ -829,11 +863,12 @@ function removemain(element){
    });
  
  targetText[18].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
  
-       targetText[i].style.color = "#f1ebe5";
+       targetText[i].style.color = "#ffffff";
        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
        targetText[i].style.transition = "color 0.0s ease";
              
@@ -842,7 +877,7 @@ function removemain(element){
  
    targetText[19].addEventListener('mouseover', () => {
      body.style.background = '#CC2A5D';
-     
+     body.style.transition = "all 1s ease";
      targetText[19].style.color = "white";
      targetText[19].style.textShadow = "0 1px 10px black";
  
@@ -858,11 +893,12 @@ function removemain(element){
    });
  
  targetText[19].addEventListener('mouseout', () => {
-     body.style.background = 'linear-gradient(to bottom, #ece4d9 0%, #e9dfd1 100%)';
+     body.style.background = '#e9dfd1';
+     body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)
      {
  
-       targetText[i].style.color = "#f1ebe5";
+       targetText[i].style.color = "#ffffff";
        targetText[i].style.textShadow = "0 8px 9px #c4b59d, 0px -2px 1px #fff";
        targetText[i].style.transition = "color 0.0s ease";
              

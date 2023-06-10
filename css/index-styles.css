@@ -30,8 +30,9 @@ html {
       height: 100vh;
       width: 100%;
       /*background: rgb(25, 132, 213);*/
-      background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
+      background: #e9dfd1;
       transition: background-color 1.2s ease;
+      margin-top: 6%;
   }
 
   body::-webkit-scrollbar
@@ -140,10 +141,11 @@ html {
     -ms-overflow-style: none;
     display: block;
     font-size: 15vw;
-    color: #f1ebe5;
+    color: #ffffff;
     text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
     line-height: 12%;
     animation: moveup 30s linear infinite;
+    
 }
 
 #emotionDiv
@@ -154,7 +156,6 @@ html {
     width: 40%;
     opacity: 1;
     transition: opacity 0.5s ease;
-    
 }
 #emotionDiv:hover
 {
@@ -788,7 +789,6 @@ background-color:rgba(156,39,176,0.5);
 }
 #emotion19:hover
 {
-    
     animation: shake 0.8s linear 5;
     color: white;
     text-shadow: 0 0 10px rgb(134, 116, 86);
