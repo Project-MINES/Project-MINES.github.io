@@ -109,7 +109,6 @@ function changeSize()
   {
     let array1 = localStorage.getItem('EmotionCount');
     let array2 = JSON.parse(array1);
-    arr = array2.Cnt;
 
     if (Array.isArray(array2.Cnt)) {
       arr = array2.Cnt;
