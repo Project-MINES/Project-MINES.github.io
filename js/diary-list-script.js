@@ -127,7 +127,25 @@ function showAllDiaries() {
   renderDiaryList(diaryList);
 }
 // 페이지 로딩 시 일기 목록 초기화 및 로딩
-loadDiaryList();
+let emotionsend = new URLSearchParams(window.location.search).get("param1");
+if (emotionsend == "기쁨이") 
+{
+  filterDiaryByEmotion(["행복", "기쁨", "설렘", "즐거움", "평온"]);
+}
+ else if (emotionsend == "슬픔이") {
+  filterDiaryByEmotion(["슬픔", "우울", "후회", "실망", "외로움"]);
+}
+else if (emotionsend == "버럭이") {
+  filterDiaryByEmotion(["분노", "짜증", "혼란", "후회", "불안"]);
+  }
+else if (emotionsend == "소심이") {
+  filterDiaryByEmotion(["지루함", "부끄러움", "죄책감", "두려움", "놀람"]);
+  }
+else
+{
+  showAllDiaries();
+}
+
 
 // 폴라로이드 확대 보기 이벤트 처리
 function showDiaryDetail(diaryData) {
@@ -165,6 +183,7 @@ function showDiaryDetail(diaryData) {
     deleteDiary(diaryData); // 로컬 스토리지에서 일기 제거
     document.getElementById("diaryDetail").remove();  // 확대 보기 컨테이너 닫기
     document.getElementById("polaroidContainer").style.display = "flex"; // 폴라로이드 목록 다시 표시
+    location.reload();
   });
   detailContainer.appendChild(deleteButton);
 
