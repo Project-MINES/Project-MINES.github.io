@@ -126,23 +126,22 @@ function showAllDiaries() {
   const diaryList = getDiaryListFromLocalStorage();
   renderDiaryList(diaryList);
 }
+
 // 페이지 로딩 시 일기 목록 초기화 및 로딩
 let emotionsend = new URLSearchParams(window.location.search).get("param1");
-if (emotionsend == "기쁨이") 
-{
+if (emotionsend == "기쁨이") {
   filterDiaryByEmotion(["행복", "기쁨", "설렘", "즐거움", "평온"]);
 }
- else if (emotionsend == "슬픔이") {
+else if (emotionsend == "슬픔이") {
   filterDiaryByEmotion(["슬픔", "우울", "후회", "실망", "외로움"]);
 }
 else if (emotionsend == "버럭이") {
   filterDiaryByEmotion(["분노", "짜증", "혼란", "후회", "불안"]);
-  }
+}
 else if (emotionsend == "소심이") {
   filterDiaryByEmotion(["지루함", "부끄러움", "죄책감", "두려움", "놀람"]);
-  }
-else
-{
+}
+else {
   showAllDiaries();
 }
 
