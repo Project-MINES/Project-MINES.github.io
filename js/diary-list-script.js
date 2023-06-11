@@ -162,7 +162,7 @@ function showDiaryDetail(diaryData) {
   // 확대 보기 내용 생성
   const content = document.createElement("div");
   content.className = "content";
-  content.textContent = diaryData.Content;
+  content.innerHTML = diaryData.Content.replace(/\n/g, "<br>"); // 줄바꿈을 <br> 태그로 대체
   detailContainer.appendChild(content);
 
   // 일기 제목 생성
