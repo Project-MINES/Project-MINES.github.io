@@ -922,40 +922,36 @@ function removemain(element){
 
 
    /* 감정 텍스트 클릭 시 해당 페이지로 이동 */
-for(let i = 0; i < 5; i++)
-{
- targetText[i].addEventListener('click', () => {
-   let sendemotion = "기쁨이";
-   let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
-   window.location.href = url;
- });
-}
+   for (let i = 0; i < 5; i++) {
+     targetText[i].addEventListener('click', () => {
+       let sendemotion = "기쁨이";
+       let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
+       window.location.href = url;
+     });
+   }
 
-for(let i = 5; i < 10; i++)
-{
- targetText[i].addEventListener('click', () => {
-   let sendemotion = "슬픔이";
-   let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
-   window.location.href = url;
- });
-}
+   for (let i = 5; i < 10; i++) {
+     targetText[i].addEventListener('click', () => {
+       let sendemotion = "슬픔이";
+       let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
+       window.location.href = url;
+     });
+   }
 
-for(let i = 10; i < 15; i++)
-{
- targetText[i].addEventListener('click', () => {
-   let sendemotion = "버럭이";
-   let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
-   window.location.href = url;
- });
-}
+   for (let i = 10; i < 15; i++) {
+     targetText[i].addEventListener('click', () => {
+       let sendemotion = "소심이";
+       let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
+       window.location.href = url;
+     });
+   }
 
-for(let i = 15; i < 20; i++)
-{
- targetText[i].addEventListener('click', () => {
-   let sendemotion = "소심이";
-   let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
-   window.location.href = url;
- });
-}
+   for (let i = 15; i < 20; i++) {
+     targetText[i].addEventListener('click', () => {
+       let sendemotion = "버럭이";
+       let url = "DiaryList.html?param1=" + encodeURIComponent(sendemotion);
+       window.location.href = url;
+     });
+   }
  }
 
