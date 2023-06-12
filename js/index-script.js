@@ -17,6 +17,8 @@ $(document).ready(function() {
 
 
 
+
+
 // 비 내리는 함수
 let makeItRain = function() {
     //clear out everything
@@ -110,7 +112,8 @@ function changeSize()
     let array1 = localStorage.getItem('EmotionCount');
     let array2 = JSON.parse(array1);
 
-    if (Array.isArray(array2.Cnt)) {
+
+    if (array2 != null) {
       arr = array2.Cnt;
     } else {
       arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
