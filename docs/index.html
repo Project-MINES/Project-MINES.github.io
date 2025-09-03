@@ -4,30 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/diary-list-style.css">
+
+    <!-- 절대경로로 수정 -->
+    <link rel="stylesheet" href="/css/diary-list-style.css">
+
     <title>Emotion_Diary</title>
     <meta http-equiv="Page-Enter" content="BlendTrans(Duration=1.0)">
     <meta http-equiv="Page-Exit" content="BlendTrans(Duration=1.0)">
 </head>
 <!-- check the Comments for more info -->
 <style>
-        body {
-          opacity: 0;
-          transition: opacity 1s ease-in;
-        }
+    body {
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
 </style>
 <body>
     <div class="rain front-row"></div>
     <div class="rain back-row"></div>
-    <div id = "gotodiarylist">
-      <button class="arrow right" onclick ="location.href='DiaryList.html'" id = "goList">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
-          <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
-          0.375,0.375 45.63,38.087 0.375,75.8 "/>
+    <div id="gotodiarylist">
+      <button class="arrow right" onclick="location.href='DiaryList.html'" id="goList">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
+          <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+            points="0.375,0.375 45.63,38.087 0.375,75.8"/>
         </svg>
       </button>
-      </div>
-      <div id = "sickband" class="container">
+    </div>
+
+    <div id="sickband" class="container">
         <div class="band">
           <div class="eye"></div>
           <div class="mouth"></div>
@@ -36,23 +40,26 @@
           </div>
           <div class="drip"></div>
         </div>
-      </div>
-      <div class="button_container">
+    </div>
+
+    <div class="button_container">
         <button class="btn"><span>CHANGE</span></button>
-      </div>
-      <script>
+    </div>
+
+    <script>
         window.addEventListener('DOMContentLoaded', function() {
-        // 페이드 인 효과를 위해 setTimeout을 사용하여 10밀리초마다 투명도를 증가시킴
-        var opacity = 0;
-        var timer = setInterval(function() {
-          opacity += 0.01; // 투명도 값을 조절하여 원하는 속도로 페이드 인 효과를 조정할 수 있음
-          document.body.style.opacity = opacity;
-          if (opacity >= 1) {
-            clearInterval(timer); // 투명도가 1에 도달하면 타이머를 중지함
-          }
-        }, 10);
-      });</script>
+            var opacity = 0;
+            var timer = setInterval(function() {
+                opacity += 0.01;
+                document.body.style.opacity = opacity;
+                if (opacity >= 1) clearInterval(timer);
+            }, 10);
+        });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/index-script.js"></script>   
+
+    <!-- 절대경로로 수정 -->
+    <script src="/js/index-script.js"></script>   
 </body>
 </html>

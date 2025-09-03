@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/diary-list-style.css">
+
+    <!-- 절대경로로 변경 -->
+    <link rel="stylesheet" type="text/css" href="/css/diary-list-style.css">
+
     <title>Diary List</title>
-    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <meta http-equiv="Page-Enter" content="BlendTrans(Duration=1.0)">
     <meta http-equiv="Page-Exit" content="BlendTrans(Duration=1.0)">
+
     <script>    
-        //페이지 로딩 시 페이드 인 효과
+        // 페이지 로딩 시 페이드 인 효과
         window.addEventListener('DOMContentLoaded', function() {
           var opacity = 0;
           var timer = setInterval(function() {
             opacity += 0.01; 
             document.body.style.opacity = opacity;
-            if (opacity >= 1) {
-              clearInterval(timer);
-            }
+            if (opacity >= 1) clearInterval(timer);
           }, 10);
         });
     </script>
 </head>
 <body>
-    <!-- <h1>일기 목록</h1> -->
     <div id="nav">
         <div id="left"></div>
         <div class="center">
@@ -36,25 +37,28 @@
         </div>
         <div id="right"></div>
     </div>
+
     <div id="gotoindex">
-        <button class="arrow left" onclick ="location.href='index.html'">
+        <button class="arrow left" onclick="location.href='index.html'">
             <svg width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
-              <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
-              45.63,75.8 0.375,38.087 45.63,0.375 " />
+              <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                        points="45.63,75.8 0.375,38.087 45.63,0.375" />
             </svg>
         </button>
     </div>
+
     <div id="gotowrite">
-        <button class="arrow right" onclick ="location.href='DiaryWrite.html'">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
-              <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
-              0.375,0.375 45.63,38.087 0.375,75.8 " />
+        <button class="arrow right" onclick="location.href='DiaryWrite.html'">
+            <svg width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
+              <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                        points="0.375,0.375 45.63,38.087 0.375,75.8" />
             </svg>
         </button>
     </div>
-    
+
     <ul id="polaroidContainer" class="diary-list"></ul>
-    <script src="../js/diary-list-script.js"></script>
-</div>
+
+    <!-- 절대경로로 변경 -->
+    <script src="/js/diary-list-script.js"></script>
 </body>
 </html>
