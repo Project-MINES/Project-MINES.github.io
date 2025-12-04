@@ -2,7 +2,7 @@
 $(document).ready(function() {
   $('#goList').click(function() {
     $('#emotionDiv').css('opacity', 0);
-    let url = 'DiarayList.html';
+    let url = 'DiaryList.html';
     $.ajax({
       url: url,
       dataType: 'html',
@@ -80,7 +80,6 @@ function printText()
           span.dataset.content = "혼란 CONFUSION";
       }
  
-    
         span.innerHTML = arr2[i] + "&nbsp;" + arr3[i] + "&nbsp;";
         if(buttonbol == true)
         {
@@ -614,7 +613,7 @@ function removemain(element){
      }
    });
  
- targetText[11].addEventListener('mouseout', () => {
+ targetText[10].addEventListener('mouseout', () => {
      body.style.background = '#e9dfd1';
      body.style.transition = "all 1s ease";
      for(let i = 0; i < 20; i++)

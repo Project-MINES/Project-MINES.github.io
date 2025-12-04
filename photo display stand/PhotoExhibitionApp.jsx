@@ -1,0 +1,263 @@
+import React, { useState, useEffect, useCallback } from 'react';
+
+// PhotoExhibitionApp.jsx
+// 단일 파일 컴포넌트: Tailwind 유틸리티만 사용
+// 로컬스토리지 키: 'photoExhibitionData'
+
+const STORAGE_KEY = 'photoExhibitionData';
+
+// 유틸: UUID 간단 생성
+const uuid = () => '_' + Math.random().toString(36).substr(2, 9);
+
+const defaultData = {
+  lines: [
+    {
+      lineId: uuid(),
+      title: '기본 라인',
+      photos: []
+    }
+  ],
+  globalEmotionTotal: 0
+};
+
+export default function PhotoExhibitionApp() {
+  const [data, setData] = useState(defaultData);
+  const [selectedLineId, setSelectedLineId] = useState(null);
+  const [fileInputKey, setFileInputKey] = useState(Date.now()); // reset input
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        setData(JSON.parse(raw));
+      } else {
+        setData(defaultData);
+        // do not auto-clear localStorage
+      }
+    } catch (e) {
+      console.error('localStorage read error', e);
+      setData(defaultData);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      console.error('localStorage write error', e);
+    }
+  }, [data]);
+
+  const handleFile = useCallback((file, lineId) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const base64 = ev.target.result;
+      const newPhoto = {
+        photoId: uuid(),
+        imageUrl: base64,
+        frontTitle: '',
+        backContent: {
+          memo: '',
+          date: new Date().toISOString().slice(0, 10),
+          weather: '',
+          emotions: [],
+          totalEmotionValue: 0
+        }
+      };
+      setData(prev => {
+        const next = { ...prev };
+        const line = next.lines.find(l => l.lineId === lineId);
+        if (line) {
+          line.photos = [...line.photos, newPhoto];
+        } else {
+          next.lines = [...next.lines, { lineId: lineId || uuid(), title: '새 라인', photos: [newPhoto] }];
+        }
+        return next;
+      });
+      setFileInputKey(Date.now());
+    };
+    reader.readAsDataURL(file);
+  }, []);
+
+  const addLine = () => {
+    const newLine = { lineId: uuid(), title: '새 라인', photos: [] };
+    setData(prev => ({ ...prev, lines: [...prev.lines, newLine] }));
+  };
+
+  const updatePhotoBack = (lineId, photoId, backContent) => {
+    setData(prev => {
+      const next = { ...prev };
+      const line = next.lines.find(l => l.lineId === lineId);
+      if (!line) return prev;
+      line.photos = line.photos.map(p => p.photoId === photoId ? { ...p, backContent: { ...backContent }, frontTitle: backContent.frontTitle || p.frontTitle } : p);
+      // update globalEmotionTotal
+      next.globalEmotionTotal = next.lines.reduce((acc, l) => acc + l.photos.reduce((s, ph) => s + (ph.backContent?.totalEmotionValue || 0), 0), 0);
+      return next;
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-amber-50 p-4 text-gray-800">
+      <header className="mb-4">
+        <h1 className="text-3xl font-serif">사진 전시대</h1>
+        <p className="text-sm text-gray-600">감성을 담은 라인에 사진을 걸어보세요.</p>
+      </header>
+
+      <main>
+        <section className="mb-6">
+          <div className="flex items-center gap-2">
+            <button onClick={addLine} className="px-3 py-1 bg-amber-200 rounded shadow">라인 추가</button>
+            <div className="text-sm text-gray-700">전체 감정 합: {data.globalEmotionTotal}</div>
+          </div>
+        </section>
+
+        <section className="space-y-8">
+          {data.lines.map(line => (
+            <LineSection
+              key={line.lineId}
+              line={line}
+              onFile={handleFile}
+              onUpdatePhotoBack={updatePhotoBack}
+            />
+          ))}
+        </section>
+      </main>
+    </div>
+  );
+}
+
+function LineSection({ line, onFile, onUpdatePhotoBack }) {
+  const [isDragging, setIsDragging] = useState(false);
+
+  return (
+    <div className="">
+      <div className="flex items-center justify-between mb-2">
+        <h2 className="font-medium">{line.title}</h2>
+        <div className="text-sm text-gray-500">사진 {line.photos.length}개</div>
+      </div>
+
+      {/* 와이어 */}
+      <div className="relative">
+        <div className="absolute left-0 right-0 top-6 border-t border-gray-400 opacity-80"></div>
+
+        {/* 사진 라인: 가로 스크롤 */}
+        <div className="mt-8 overflow-x-auto pb-4">
+          <div className="flex gap-6 items-start px-4">
+            {line.photos.map(photo => (
+              <PhotoCard key={photo.photoId} photo={photo} lineId={line.lineId} onFile={onFile} onUpdatePhotoBack={onUpdatePhotoBack} />
+            ))}
+
+            {/* 빈 영역: 파일 입력 */}
+            <div className="w-40 flex-shrink-0">
+              <FileDropBox onFile={(file) => onFile(file, line.lineId)} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FileDropBox({ onFile }) {
+  const [hover, setHover] = useState(false);
+
+  const handleChange = (e) => {
+    const f = e.target.files[0];
+    if (f) onFile(f);
+  };
+
+  return (
+    <label className={`block border-dashed border-2 rounded p-3 text-center text-sm bg-white ${hover ? 'border-amber-400' : 'border-gray-300'}`}>
+      <input type="file" accept="image/*" onChange={handleChange} className="hidden" />
+      <div>+</div>
+      <div className="text-xs text-gray-500">사진 추가</div>
+    </label>
+  );
+}
+
+function PhotoCard({ photo, lineId, onFile, onUpdatePhotoBack }) {
+  const [flipped, setFlipped] = useState(false);
+  const [back, setBack] = useState(photo.backContent || { memo: '', date: '', weather: '', emotions: [], totalEmotionValue: 0 });
+  const [aspect, setAspect] = useState('square'); // 'landscape' | 'portrait' | 'square'
+
+  useEffect(() => setBack(photo.backContent || back), [photo.backContent]);
+
+  // 이미지 로드 시 비율 판단
+  const handleImgLoad = (e) => {
+    try {
+      const img = e.target;
+      const w = img.naturalWidth;
+      const h = img.naturalHeight;
+      if (w > h * 1.2) setAspect('landscape');
+      else if (h > w * 1.2) setAspect('portrait');
+      else setAspect('square');
+    } catch (err) { /* ignore */ }
+  };
+
+  const toggleFlip = () => setFlipped(f => !f);
+
+  const handleEmotionToggle = (emotion) => {
+    setBack(prev => {
+      const exists = prev.emotions.includes(emotion);
+      const emotions = exists ? prev.emotions.filter(e => e !== emotion) : [...prev.emotions, emotion];
+      const totalEmotionValue = emotions.length;
+      const frontTitle = emotions.length ? emotions.join(', ') : (photo.frontTitle || '');
+      return { ...prev, emotions, totalEmotionValue, frontTitle };
+    });
+  };
+
+  const saveBack = () => {
+    if (!back.emotions || back.emotions.length === 0) {
+      alert('감정은 최소 1개 이상 선택해주세요.');
+      return;
+    }
+    const backToSave = { ...back, totalEmotionValue: back.totalEmotionValue || back.emotions.length };
+    // Pass backContent; updatePhotoBack will also set frontTitle if provided in backContent
+    onUpdatePhotoBack(lineId, photo.photoId, backToSave);
+    setFlipped(false);
+  };
+
+  // 카드 크기/이미지 클래스 결정
+  const cardClass = aspect === 'landscape' ? 'w-56 h-40' : aspect === 'portrait' ? 'w-40 h-64' : 'w-48 h-48';
+  const imgClass = aspect === 'landscape' ? 'w-full h-full object-contain bg-gray-50 p-1' : 'w-full h-full object-cover';
+
+  return (
+    <div className={`${cardClass} flex-shrink-0 relative`}>
+      {/* Pin */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 -top-3 text-xl">📌</div>
+
+      <div className="perspective-800">
+        <div className={`relative w-full h-full transition-transform duration-500 transform ${flipped ? 'rotate-y-180' : ''}`}>
+
+          {/* Front */}
+          <div className={`absolute backface-hidden inset-0 bg-white rounded shadow overflow-hidden flex flex-col`} onClick={toggleFlip}>
+            <img src={photo.imageUrl} alt={photo.frontTitle || back.frontTitle || 'photo'} className={imgClass} onLoad={handleImgLoad} onError={(e)=>{e.target.onerror=null;e.target.src='https://placehold.co/600x400/DDD/555?text=No+Image';}} />
+            <div className="p-2">
+              <h3 className="text-sm font-medium text-gray-800 truncate">{photo.frontTitle || back.frontTitle || '사진'}</h3>
+            </div>
+          </div>
+
+          {/* Back */}
+          <div className={`absolute backface-hidden inset-0 bg-white rounded shadow transform rotate-y-180 p-2 overflow-auto`} style={{ display: flipped ? 'block' : 'none' }}>
+            <textarea value={back.memo} onChange={e => setBack({ ...back, memo: e.target.value })} className="w-full h-24 text-sm p-1 border rounded" placeholder="메모를 입력하세요"></textarea>
+            <div className="mt-2 text-xs text-gray-600">날짜: <input type="date" value={back.date} onChange={e => setBack({ ...back, date: e.target.value })} className="text-xs" /></div>
+            <div className="mt-2">
+              <div className="text-sm">감정 (최소 1개)</div>
+              <div className="flex gap-2 mt-1 flex-wrap">
+                {['행복','슬픔','설렘','그리움'].map(em => (
+                  <button key={em} onClick={() => handleEmotionToggle(em)} className={`px-2 py-0.5 rounded text-xs ${back.emotions.includes(em) ? 'bg-amber-300' : 'bg-gray-200'}`}>{em}</button>
+                ))}
+              </div>
+            </div>
+            <div className="mt-3 flex justify-end gap-2">
+              <button onClick={saveBack} className="px-2 py-1 bg-amber-200 rounded text-sm">저장</button>
+              <button onClick={toggleFlip} className="px-2 py-1 bg-gray-200 rounded text-sm">취소</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  );
+}
